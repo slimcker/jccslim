@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film Festival Movie Database</title>
+    <style>
+        :root {
+            /* Pastel palette */
+            --pastel-blue: #93c5fd;   /* blue-300 */
+            --pastel-purple: #c4b5fd; /* purple-300 */
+            --pastel-green: #86efac;  /* green-300 */
+            --pastel-yellow: #fde68a; /* yellow-300 */
+            --pastel-teal: #a7f3d0;   /* teal-200 */
+
+            --text-primary: #e2e8f0;
+            --text-muted: #cbd5e1;
+            --surface-1: #0f172a;     /* deep navy */
+            --surface-2: #1e293b;     /* slate */
+            --surface-3: #334155;     /* lighter slate */
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0b1220;
+            background-image:
+                radial-gradient(1200px at 85% 5%, rgba(255,131,35,0.95) 0%, rgba(255,131,35,0.55) 35%, rgba(255,131,35,0.25) 55%, transparent 70%),
+                radial-gradient(900px at 92% 40%, rgba(255,63,128,0.9) 0%, rgba(255,63,128,0.5) 40%, transparent 75%),
+                radial-gradient(1100px at 8% 95%, rgba(46,144,255,0.95) 0%, rgba(46,144,255,0.55) 45%, transparent 78%),
+                radial-gradient(900px at 30% 45%, rgba(255,247,234,0.8) 0%, rgba(255,247,234,0.4) 35%, transparent 70%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1.1em;
+        }
+
+        .creator-line {
+            text-align: center;
+            font-size: 0.9em;
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-top: 6px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .time-filter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+        .time-filter input[type="time"] {
+            max-width: 160px;
+        }
+
+        input[type="text"],
+        select,
+        input[type="time"] {
+            padding: 12px 16px;
+            background: var(--surface-2);
+            border: 1px solid var(--surface-3);
+            color: var(--text-primary);
+            border-radius: 12px;
+            font-size: 1em;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        input[type="text"]::placeholder {
+            color: #64748b;
+        }
+
+        input[type="text"]:focus,
+        select:focus,
+        input[type="time"]:focus {
+            outline: none;
+            border-color: var(--pastel-blue);
+            box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.18);
+        }
+
+        button {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-green) 100%);
+            color: white;
+            border: none;
+            border-radius: 999px; /* pill shape */
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 16px rgba(147, 197, 253, 0.35);
+        }
+
+        .filter-toggle-btn {
+            background: linear-gradient(135deg, var(--pastel-purple) 0%, var(--pastel-blue) 100%);
+        }
+
+        .filter-toggle-btn.active {
+            background: linear-gradient(135deg, #6ee7b7 0%, var(--pastel-green) 100%);
+            box-shadow: 0 8px 16px rgba(110, 231, 183, 0.4);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--surface-2);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid var(--surface-3);
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(2, 6, 23, 0.35);
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #60a5fa;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            color: #94a3b8;
+            font-size: 0.9em;
+        }
+
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .movie-card {
+            background: var(--surface-2);
+            border-left: 4px solid var(--pastel-yellow);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid var(--surface-3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .movie-card:hover {
+            background: #273244;
+            transform: translateX(3px);
+            box-shadow: 0 10px 28px rgba(147, 197, 253, 0.25);
+        }
+
+        .movie-title {
+            font-size: 1.25em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #f1f5f9;
+        }
+
+        .movie-subtitle {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-top: -4px;
+            margin-bottom: 8px;
+        }
+        .movie-subtitle.rtl {
+            direction: rtl;
+        }
+
+        /* Sub-projection styles for multi-film sessions */
+        .sub-projections {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px dashed #334155;
+            display: grid;
+            gap: 12px;
+        }
+        .projection-item {
+            background: var(--surface-1);
+            border: 1px solid var(--surface-3);
+            border-left: 3px solid var(--pastel-teal);
+            border-radius: 12px;
+            padding: 12px;
+        }
+        .projection-title {
+            font-size: 1.05em;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 6px;
+        }
+        .projection-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 8px;
+            font-size: 0.9em;
+            color: #cbd5e1;
+        }
+
+        /* Modal styles */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal {
+            background: var(--surface-1);
+            border: 1px solid var(--surface-3);
+            border-radius: 16px;
+            width: 520px;
+            max-width: 90vw;
+            box-shadow: 0 12px 36px rgba(2, 6, 23, 0.6);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid #334155;
+            color: #e2e8f0;
+        }
+        .close-btn {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        .modal-body {
+            max-height: 320px;
+            overflow: auto;
+            padding: 12px 16px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 8px 16px;
+        }
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            padding: 12px 16px 16px;
+            border-top: 1px solid #334155;
+        }
+        .modal-actions .primary {
+            background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-purple) 100%);
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 999px;
+            cursor: pointer;
+        }
+
+        /* Country option styles */
+        .country-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #cbd5e1;
+        }
+        .country-option.main {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #f8fafc;
+        }
+
+        .movie-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            font-size: 0.9em;
+            color: #cbd5e1;
+            margin-top: 12px;
+        }
+
+        .meta-item {
+            display: flex;
+            gap: 6px;
+        }
+
+        .meta-label {
+            color: #94a3b8;
+            font-weight: 600;
+        }
+
+        .cinema-badge {
+            display: inline-block;
+            background: #273244;
+            color: var(--pastel-purple);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #94a3b8;
+        }
+
+        .no-results-icon {
+            font-size: 3em;
+            margin-bottom: 16px;
+        }
+        .reset-btn {
+            background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+            color: #1f2937;
+        }
+        .reset-btn:hover {
+            box-shadow: 0 8px 16px rgba(252, 165, 165, 0.45);
+        }
+        .view-toggle {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .view-btn {
+            padding: 8px 16px;
+            background: #334155;
+            color: #e2e8f0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn.active {
+            background: #60a5fa;
+            color: white;
+        }
+
+        .list-view {
+            display: grid;
+            gap: 16px;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+                gap: 12px;
+            }
+            input[type="text"],
+            select,
+            input[type="time"],
+            button {
+                min-width: unset;
+                width: 100%;
+            }
+            .time-filter input[type="time"] {
+                width: min(240px, 90%);
+            }
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .movies-grid {
+                grid-template-columns: 1fr;
+            }
+            header {
+                margin-bottom: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 moteur de recherche films JCC</h1>
+            <div class="creator-line">created by @slim</div>
+            <p class="subtitle">All movies from the festival across all cinemas</p>
+        </header>
+
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Search by title, director, or country...">
+        
+            <select id="cinemaFilter">
+                <option value="">All Cinemas</option>
+                <option value="CINÉ 350">CINÉ 350</option>
+                <option value="ABC">ABC</option>
+                <option value="LE RIO">LE RIO</option>
+                <option value="4ÈME ART">4ÈME ART</option>
+   
+                <option value="TAHAR CHERIAA">TAHAR CHERIAA</option>
+                <option value="IBN RACHIQ">IBN RACHIQ</option>
+                <option value="COLISÉE">COLISÉE</option>
+                <option value="AFRICA">AFRICA</option>
+                <option value="ALHAMBRA ZEPHYR">ALHAMBRA ZEPHYR</option>
+            
+            </select>
+            <select id="categoryFilter">
+                <option value="">All Categories</option>
+            </select>
+            <button id="countryFilterBtn" class="filter-toggle-btn" onclick="openCountryModal()">Country Filter</button>
+            <button id="todayBtn" class="filter-toggle-btn" onclick="toggleTodaysMovies()">🎬 Today's Movies</button>
+            <button id="coBtn" class="filter-toggle-btn" onclick="toggleCOOnly()">Compe Offic</button>
+            <div class="time-filter">
+                <label for="timeFrom">Temps à partir de</label>
+                <input type="time" id="timeFrom" step="60">
+            </div>
+            <button class="reset-btn" onclick="resetFilters()">🗑️ Reset Filters</button>
+        </div>
+
+        <div class="stats">
+         
+            <div class="stat-card">
+                <div class="stat-number" id="totalMovies">0</div>
+                <div class="stat-label">Total Projections</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="cinemaCount">9</div>
+                <div 
+class="stat-label">salles de cinéma</div>
+            </div>
+            <div class="stat-card" id="countriesStat" onclick="openCountryModal()">
+                <div class="stat-number" id="countryCount">0</div>
+                <div class="stat-label">Countries</div>
+            </div>
+        </div>
+
+        <div id="moviesContainer" class="movies-grid"></div>
+
+        <!-- Countries Modal -->
+        <div id="countryModal" class="modal-backdrop" style="display:none;">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>Select Countries</h3>
+                    <button class="close-btn" onclick="closeCountryModal()">✖</button>
+                </div>
+                <div id="countryOptions" class="modal-body"></div>
+                <div class="modal-actions">
+                    <button onclick="clearCountrySelection()">Clear</button>
+                    <button class="primary" onclick="applyCountrySelection()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+  
+        // Complete movie data with all movies extracted
+        let allMoviesData = [
+            { title: 'MY FATHER\'S SHADOW', director: 'AKINOLA DAVIES JR', country: 'NIGÉRIA', duration: 93, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'CO LM FICTION', date: 'Dimanche 14 Déc' },
+            { title: 'KATANGA LA DANSE DES SCORPIONS', director: 'DANI KOUYATÉ', country: 'BURKINA FASO', duration: 114, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'CO LM FICTION', date: 'Dimanche 14 Déc' },
+            { title: 'ONCE UPON A TIME IN GAZA', director: 'ARAB ET TARZAN NASSER', country: 'PALESTINE', duration: 90, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'CO LM FICTION', date: 'Dimanche 14 Déc' },
+            { title: 'SINK', director: 'ZAIN DURAIE', country: 'JORDANIE', duration: 88, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'CO LM FICTION', date: 'Lundi 15 Déc' },
+            { title: 'MY FATHER\'S SCENT', director: 'MOHAMED SIAM', country: 'EGYPTE', duration: 96, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'CO LM FICTION', date: 'Lundi 15 Déc' },
+            { title: 'THE VOICE OF HIND RAJAB', director: 'KAOUTHER BEN HANIA', country: 'TUNISIE', duration: 90, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'CO LM FICTION', date: 'Lundi 15 Déc' },
+            { title: 'HIJRA', director: 'SHAHAD AMEEN', country: 'ARABIE SAOUDITE', duration: 114, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'CO LM FICTION', date: 'Mardi 16 Déc' },
+            { title: 'IRKALLA: GILGAMESH\'S DREAM', director: 'MOHAMED JABARAH AL-DARADJI', country: 'IRAK', duration: 109, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'CO LM FICTION', date: 'Mardi 16 Déc' },
+            { title: 'PROMISED SKY', director: 'ERIGE SEHIRI', country: 'TUNISIE', duration: 92, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'CO LM FICTION', date: 'Mardi 16 Déc' },
+            { title: 'DIYA', director: 'ACHILLE RONAIMOU', country: 'TCHAD', duration: 96, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'CO LM FICTION', date: 'Mercredi 17 Déc' },
+            { title: 'THE STORIES', director: 'ABU BAKR SHAWKY', country: 'EGYPTE', duration: 111, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'CO LM FICTION', date: 'Mercredi 17 Déc' },
+            { title: 'WHERE THE WIND COMES FROM', director: 'AMEL GUELLATY', country: 'TUNISIE', duration: 99, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'CO LM FICTION', date: 'Mercredi 17 Déc' },
+            { title: 'L\'ODYSSÉE DE L\'OUBLI', director: 'MOKHTAR LADJIMI', country: 'TUNISIE', duration: 105, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'SÉANCE SPÉCIALE', date: 'Jeudi 18 Déc' },
+            { title: 'COTTON QUEEN', director: 'SUZANNAH MIRGHANI', country: 'SOUDAN', duration: 93, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'CO LM FICTION', date: 'Jeudi 18 Déc' },
+            { title: 'ROQIA', director: 'YANIS KOUSSIM', country: 'ALGÉRIE', duration: 94, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'CO LM FICTION', date: 'Jeudi 18 Déc' },
+            { title: 'BOOMERANG ATOMIC', director: 'RACHID BOUCHAREB', country: 'ALGÉRIE', duration: 21, language: 'VOSTEN', type: 'short', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CARTE BLANCHE', date: 'Dimanche 14 Déc' },
+            { title: 'CIMETIÈRE DE VIE', director: 'MAMADOU MOUSTAPHA GUEYE', country: 'SÉNÉGAL', duration: 60, language: 'VOSTEN', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CO LM DOC', date: 'Dimanche 14 Déc' },
+            { title: 'FIVE EYES', director: 'KARIM DEBBAGH', country: 'MAROC', duration: 75, language: 'Multiple', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CO LM DOC', date: 'Dimanche 14 Déc' },
+            { title: 'LITI LITI / THE ATTACHEMENT', director: 'MAMADOU KHOUMA GUEYE', country: 'SÉNÉGAL', duration: 76, language: 'VOSTEN', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CO LM DOC', date: 'Dimanche 14 Déc' },
+            { title: 'THE OTHER... RAEBURN', director: 'DAVID-PIERRE FILA', country: 'RÉPUBLIQUE DU CONGO', duration: 113, language: 'VOSTFR', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CO LM DOC', date: 'Lundi 15 Déc' },
+            { title: 'CINEMA KAWAKEB', director: 'MAHMOUD AL MASSAD', country: 'JORDANIE', duration: 78, language: 'Multiple', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CO LM DOC', date: 'Lundi 15 Déc' },
+            { title: 'LE PARA-DIS', director: 'MAJDI LAKHDAR', country: 'TUNISIE', duration: 82, language: 'Multiple', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CO LM DOC', date: 'Lundi 15 Déc' },
+            { title: 'L\'HOMME QUI PLANTE LES BAOBABS', director: 'K.MICHEL ZONGO', country: 'BURKINA FASO', duration: 74, language: 'Multiple', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CO LM DOC', date: 'Mardi 16 Déc' },
+            { title: 'PROGRAMME 1 COMPÉTITION OFFICIELLE COURTS MÉTRAGES', director: '', country: '', duration: 111, language: 'Multiple', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CO COURTS MÉTRAGES', date: 'Mardi 16 Déc' },
+            { title: 'NOTRE SEMENCE', director: 'ANIS LASSOUED', country: 'TUNISIE', duration: 80, language: 'Multiple', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CO LM DOC', date: 'Mardi 16 Déc' },
+            { title: 'HOME MOVIE ON LOCATION', director: 'VIOLA SHAFIK', country: 'EGYPTE', duration: 100, language: 'VOSTFR', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CO LM DOC', date: 'Mercredi 17 Déc' },
+            { title: 'PROGRAMME 2 COMPÉTITION OFFICIELLE COURTS MÉTRAGES', director: '', country: '', duration: 110, language: 'Multiple', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CO COURTS MÉTRAGES', date: 'Mercredi 17 Déc' },
+            { title: 'ON THE HILL', director: 'BELHASSEN HANDOUS', country: 'TUNISIE', duration: 77, language: 'Multiple', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CO LM DOC', date: 'Mercredi 17 Déc' },
+            { title: 'THE LIONS BY THE RIVER TIGRIS', director: 'ZARADASHT AHMED', country: 'IRAK', duration: 91, language: 'Multiple', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CO LM DOC', date: 'Jeudi 18 Déc' },
+            { title: 'PROGRAMME 3 COMPÉTITION OFFICIELLE COURTS MÉTRAGES', director: '', country: '', duration: 103, language: 'Multiple', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CO COURTS MÉTRAGES', date: 'Jeudi 18 Déc' },
+            { title: 'TALES OF THE WOUNDED LAND', director: 'ABBAS FAHDEL', country: 'IRAK', duration: 120, language: 'Multiple', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CO LM DOC', date: 'Jeudi 18 Déc' },
+            { title: 'BARRY LYNDON', director: 'STANLEY KUBRICK', country: 'USA', duration: 185, language: 'VOSTEN', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CINÉMA DU MONDE', date: 'Vendredi 19 Déc' },
+            { title: 'ROUND 13', director: 'MOHAMED ALI NAHDI', country: 'TUNISIE', duration: 90, language: 'Multiple', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'SÉANCE SPÉCIALE', date: 'Vendredi 19 Déc' },
+            { title: 'GAZA - FROM GROUND ZERO PROGRAMME 1', director: '', country: '', duration: 81, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'LA PALESTINE AU CŒUR DES JCC', date: 'Dimanche 14 Déc' },
+            { title: 'LATE SHIFT', director: 'PETRA VOLPE', country: 'SUISSE', duration: 92, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'CINÉMA DU MONDE', date: 'Dimanche 14 Déc' },
+            { title: 'LE SANG DU CONDOR', director: 'JORGE SANJINÉS', country: 'BOLIVIE', duration: 69, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'CINÉMA AMÉRIQUE LATINE', date: 'Dimanche 14 Déc' },
+            { title: 'CINÉ PROMESSE PROGRAMME 1', director: '', country: '', duration: 79, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'CINÉ-PROMESSE', date: 'Lundi 15 Déc' },
+            { title: 'RETURN TO HAIFA', director: 'KASSEM HAWAL', country: 'IRAK - PALESTINE', duration: 76, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Lundi 15 Déc' },
+            { title: 'SORDA', director: 'EVA LIBERTAD', country: 'ESPAGNE', duration: 109, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'CINÉMA ESPAGNOL', date: 'Lundi 15 Déc' },
+            { title: 'EL 47', director: 'MARCEL BARRENA', country: 'ESPAGNE', duration: 110, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'CINÉMA ESPAGNOL', date: 'Mardi 16 Déc' },
+            { title: 'GAZA - FROM GROUND ZERO PROGRAMME 2', director: '', country: '', duration: 85, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'LA PALESTINE AU CŒUR DES JCC', date: 'Mardi 16 Déc' },
+            { title: 'CERF-VOLANT', director: 'RANDA CHAHAL SABBAGH', country: 'LIBAN', duration: 80, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Mardi 16 Déc' },
+            { title: 'CINÉ PROMESSE PROGRAMME 2', director: '', country: '', duration: 60, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'CINÉ-PROMESSE', date: 'Mercredi 17 Déc' },
+            { title: 'LA NOCE', director: 'COLLECTIF LE NOUVEAU THÉÂTRE DE TUNIS', country: 'TUNISIE', duration: 90, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'JCC CLASSIQUE FILMS RESTAURÉS', date: 'Mercredi 17 Déc' },
+            { title: 'THE LAST VIKING', director: 'ANDERS THOMAS JENSEN', country: 'DANEMARK', duration: 116, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'CINÉMA DU MONDE', date: 'Mercredi 17 Déc' },
+            { title: 'CINÉ PROMESSE PROGRAMME 3', director: '', country: '', duration: 70, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'CINÉ-PROMESSE', date: 'Jeudi 18 Déc' },
+            { title: 'PROGRAMME 2 COMPÉTITION OFFICIELLE COURTS MÉTRAGES', director: '', country: '', duration: 110, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'CO COURTS MÉTRAGES', date: 'Jeudi 18 Déc' },
+            { title: 'PALESTINE 36', director: 'ANNEMARIE JACIR', country: 'PALESTINE', duration: 119, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'FILM D\'OUVERTURE', date: 'Jeudi 18 Déc' },
+            { title: 'NAHLA', director: 'FAROUK BELLOUFA', country: 'ALGÉRIE', duration: 111, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Vendredi 19 Déc' },
+            { title: 'L\'AGENT SECRET', director: 'KLEBER MENDONÇA FILHO', country: 'BRÉSIL', duration: 160, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'CINÉMA DU MONDE', date: 'Vendredi 19 Déc' },
+            { title: 'ROMERIA', director: 'CARLA SIMÓN', country: 'ESPAGNE', duration: 115, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'CINÉMA ESPAGNOL', date: 'Vendredi 19 Déc' },
+            { title: 'LA CASA', director: 'ALEX MONTOYA', country: 'ESPAGNE', duration: 80, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'CINÉMA ESPAGNOL', date: 'Samedi 20 Déc' },
+            { title: 'PROGRAMME 3 COMPÉTITION OFFICIELLE COURTS MÉTRAGES', director: '', country: '', duration: 103, language: 'Multiple', type: 'feature', cinema: '4ÈME ART', category: 'CO COURTS MÉTRAGES', date: 'Samedi 20 Déc' },
+            { title: 'JAD GHOSN', director: '', country: 'LIBAN', duration: 111, language: 'VO', type: 'feature', cinema: '4ÈME ART', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Samedi 20 Déc' },
+            { title: 'JAD GHOSN', director: '', country: 'LIBAN', duration: 111, language: 'VO', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Samedi 20 Déc' },
+            { title: 'LE TEMPS DES CHARRUÉS', director: 'CHADLY HAJ MOHAMED', country: 'TUNISIE', duration: 80, language: 'Multiple', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Samedi 20 Déc' },
+            { title: 'PROGRAMME 1 COMPÉTITION OFFICIELLE COURTS MÉTRAGES', director: '', country: '', duration: 111, language: 'Multiple', type: 'feature', cinema: 'THÉÂTRE DES RÉGIONS', category: 'CO COURTS MÉTRAGES', date: 'Samedi 20 Déc' },
+            { title: 'RETURN TO HAIFA', director: 'KASSEM HAWAL', country: 'IRAK - PALESTINE', duration: 76, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Vendredi 19 Déc' },
+            { title: 'BARRY LYNDON', director: 'STANLEY KUBRICK', country: 'USA', duration: 185, language: 'VOSTEN', type: 'feature', cinema: 'L\'OPERA', category: 'CINÉMA DU MONDE', date: 'Vendredi 19 Déc' },
+            { title: 'CINÉ PROMESSE PROGRAMME 1', director: '', country: '', duration: 79, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'CINÉ-PROMESSE', date: 'Vendredi 19 Déc' },
+            { title: 'CINÉ PROMESSE PROGRAMME 2', director: '', country: '', duration: 60, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'CINÉ-PROMESSE', date: 'Samedi 20 Déc' },
+            { title: 'CERF-VOLANT', director: 'RANDA CHAHAL SABBAGH', country: 'LIBAN', duration: 80, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Samedi 20 Déc' },
+            { title: 'NAHLA', director: 'FAROUK BELLOUFA', country: 'ALGÉRIE', duration: 111, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Samedi 20 Déc' },
+            { title: 'LE TEMPS DES CHARRUÉS', director: 'CHADLY HAJ MOHAMED', country: 'TUNISIE', duration: 80, language: 'Multiple', type: 'feature', cinema: 'L\'OPERA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Samedi 20 Déc' },
+            { title: 'CINÉ-PROMESSE PROGRAMME 1', director: '', country: '', duration: 79, language: 'Multiple', type: 'feature', cinema: 'CINÉ 350', category: 'CINÉ-PROMESSE', date: 'Dimanche 14 Déc' },
+            { title: 'INSIANG', director: 'LINO BROCKA', country: 'PHILLIPINES', duration: 95, language: 'VOSTEN', type: 'feature', cinema: 'CINÉ 350', category: 'CINÉMA PHILIPPIN', date: 'Dimanche 14 Déc' },
+            { title: 'BONJOUR C\'EST MOI', director: 'FRUNZE DOVLATYAN', country: 'ARMÉNIE', duration: 137, language: 'VOSTFR', type: 'feature', cinema: 'CINÉ 350', category: 'CINÉMA ARMÉNIEN', date: 'Dimanche 14 Déc' },
+            { title: 'LA CASA', director: 'ALEX MONTOYA', country: 'ESPAGNE', duration: 80, language: 'VOSTEN', type: 'feature', cinema: 'CINÉ 350', category: 'CINÉMA ESPAGNOL', date: 'Dimanche 14 Déc' },
+            { title: 'CINÉ-PROMESSE PROGRAMME 2', director: '', country: '', duration: 60, language: 'Multiple', type: 'feature', cinema: 'CINÉ 350', category: 'CINÉ-PROMESSE', date: 'Lundi 15 Déc' },
+            { title: 'GAZA GRAD', director: 'SAWSAN QAOUD', country: 'PALESTINE', duration: 77, language: 'VOSTEN', type: 'feature', cinema: 'CINÉ 350', category: 'HORS COMPÉTITION', date: 'Lundi 15 Déc' },
+            { title: 'LE FESTIN', director: 'MOHAMED DAMMAK', country: 'TUNISIE', duration: 15, language: 'VO', type: 'short', cinema: 'CINÉ 350', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Lundi 15 Déc' },
+            { title: 'LES PALMIERS BLESSÉS', director: 'ABDELLATIF BEN AMMAR', country: 'TUNISIE', duration: 106, language: 'VO', type: 'feature', cinema: 'CINÉ 350', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Lundi 15 Déc' },
+            { title: 'THE LAST VIKING', director: 'ANDERS THOMAS JENSEN', country: 'DANEMARK', duration: 116, language: 'VOSTEN', type: 'feature', cinema: 'CINÉ 350', category: 'CINÉMA DU MONDE', date: 'Lundi 15 Déc' },
+            { title: 'CINÉ-PROMESSE PROGRAMME 3', director: '', country: '', duration: 70, language: 'Multiple', type: 'feature', cinema: 'CINÉ 350', category: 'CINÉ-PROMESSE', date: 'Mardi 16 Déc' },
+            { title: 'LA VILLA DAR ENNAS', director: 'MOHAMED DAMMAK', country: 'TUNISIE', duration: 83, language: 'VOSTEN', type: 'feature', cinema: 'CINÉ 350', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Mardi 16 Déc' },
+            { title: 'LE SANG DU CONDOR', director: 'JORGE SANJINÉS', country: 'BOLIVIE', duration: 69, language: 'VOSTEN', type: 'feature', cinema: 'CINÉ 350', category: 'CINÉMA AMÉRIQUE LATINE', date: 'Mardi 16 Déc' },
+            { title: 'EL 47', director: 'MARCEL BARRENA', country: 'ESPAGNE', duration: 110, language: 'VOSTEN', type: 'feature', cinema: 'CINÉ 350', category: 'CINÉMA ESPAGNOL', date: 'Mardi 16 Déc' },
+            { title: 'COMPILATION COURTS MÉTRAGES', director: '', country: '', duration: 97, language: 'Multiple', type: 'feature', cinema: 'CINÉ 350', category: 'CINÉMA ARMÉNIEN', date: 'Mercredi 17 Déc' },
+            { title: 'CINEMA KAWAKEB', director: 'MAHMOUD AL MASSAD', country: 'JORDANIE', duration: 78, language: 'VOSTEN', type: 'feature', cinema: 'CINÉ 350', category: 'CO LM DOC', date: 'Mercredi 17 Déc' },
+            { title: 'SORDA', director: 'EVA LIBERTAD', country: 'ESPAGNE', duration: 109, language: 'VOSTEN', type: 'feature', cinema: 'CINÉ 350', category: 'CINÉMA ESPAGNOL', date: 'Mercredi 17 Déc' },
+            { title: 'PROGRAMME 1 COMPÉTITION OFFICIELLE COURTS MÉTRAGES', director: '', country: '', duration: 111, language: 'Multiple', type: 'feature', cinema: 'CINÉ 350', category: 'CO COURTS MÉTRAGES', date: 'Jeudi 18 Déc' },
+            { title: 'I WILL REMEMBER YOU', director: 'MOHAMED RIDA GUEZNAI', country: 'MAROC', duration: 93, language: 'VOSTFR', type: 'feature', cinema: 'CINÉ 350', category: 'HORS COMPÉTITION', date: 'Jeudi 18 Déc' },
+            { title: 'REDISCOVERING FANON', director: 'RICO SPEIGHT', country: 'USA', duration: 83, language: 'VOSTFR', type: 'feature', cinema: 'CINÉ 350', category: 'SÉANCE SPÉCIALE', date: 'Jeudi 18 Déc' },
+            { title: 'FATHER MOTHER SISTER BROTHER', director: 'JIM JARMUSCH', country: 'USA', duration: 111, language: 'Multiple', type: 'feature', cinema: 'CINÉ 350', category: 'CINÉMA DU MONDE', date: 'Jeudi 18 Déc' },
+            { title: 'JAD GHOSN', director: '', country: 'LIBAN', duration: 111, language: 'VO', type: 'feature', cinema: 'CINÉ 350', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Vendredi 19 Déc' },
+            { title: 'GREEN PROGRAMME COURTS-MÉTRAGES D\'ENVIRONNEMENT', director: '', country: '', duration: 101, language: 'Multiple', type: 'feature', cinema: 'CINÉ 350', category: 'GREEN', date: 'Vendredi 19 Déc' },
+            { title: 'THE SETTLEMENT', director: 'MOHAMED RASHAD', country: 'EGYPTE', duration: 93, language: 'Multiple', type: 'feature', cinema: 'CINÉ 350', category: 'SÉANCE SPÉCIALE', date: 'Vendredi 19 Déc' },
+            { title: 'PROGRAMME 2 COMPÉTITION OFFICIELLE COURTS MÉTRAGES', director: '', country: '', duration: 110, language: 'Multiple', type: 'feature', cinema: 'CINÉ 350', category: 'CO COURTS MÉTRAGES', date: 'Samedi 20 Déc' },
+            { title: 'ROMERIA', director: 'CARLA SIMÓN', country: 'ESPAGNE', duration: 115, language: 'Multiple', type: 'feature', cinema: 'CINÉ 350', category: 'CINÉMA ESPAGNOL', date: 'Samedi 20 Déc' },
+            { title: 'FATHER MOTHER SISTER BROTHER', director: 'JIM JARMUSCH', country: 'USA', duration: 111, language: 'Multiple', type: 'feature', cinema: 'CINÉ 350', category: 'CINÉMA DU MONDE', date: 'Samedi 20 Déc' },
+            { title: 'CINÉ PROMESSE PROGRAMME 1', director: '', country: '', duration: 79, language: 'Multiple', type: 'feature', cinema: 'ABC', category: 'CINÉ-PROMESSE', date: 'Dimanche 14 Déc' },
+            { title: 'MY FATHER\'S SCENT', director: 'MOHAMED SIAM', country: 'EGYPTE', duration: 96, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'CO LM FICTION', date: 'Dimanche 14 Déc' },
+            { title: 'THE VOICE OF HIND RAJAB', director: 'KAOUTHER BEN HANIA', country: 'TUNISIE', duration: 90, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'CO LM FICTION', date: 'Dimanche 14 Déc' },
+            { title: 'SINK', director: 'ZAIN DURAIE', country: 'JORDANIE', duration: 88, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'CO LM FICTION', date: 'Lundi 15 Déc' },
+            { title: 'HIJRA', director: 'SHAHAD AMEEN', country: 'ARABIE SAOUDITE', duration: 114, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'CO LM FICTION', date: 'Lundi 15 Déc' },
+            { title: 'PROMISED SKY', director: 'ERIGE SEHIRI', country: 'TUNISIE', duration: 92, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'CO LM FICTION', date: 'Mardi 16 Déc' },
+            { title: 'IRKALLA: GILGAMESH\'S DREAM', director: 'MOHAMED JABARAH AL-DARADJI', country: 'IRAK', duration: 109, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'CO LM FICTION', date: 'Mardi 16 Déc' },
+            { title: 'DIYA', director: 'ACHILLE RONAIMOU', country: 'TCHAD', duration: 96, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'CO LM FICTION', date: 'Mercredi 17 Déc' },
+            { title: 'COTTON QUEEN', director: 'SUZANNAH MIRGHANI', country: 'SOUDAN', duration: 93, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'CO LM FICTION', date: 'Mercredi 17 Déc' },
+            { title: 'THE STORIES', director: 'ABU BAKR SHAWKY', country: 'EGYPTE', duration: 111, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'CO LM FICTION', date: 'Mercredi 17 Déc' },
+            { title: 'ROQIA', director: 'YANIS KOUSSIM', country: 'ALGÉRIE', duration: 94, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'CO LM FICTION', date: 'Jeudi 18 Déc' },
+            { title: 'WHERE THE WIND COMES FROM', director: 'AMEL GUELLATY', country: 'TUNISIE', duration: 99, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'CO LM FICTION', date: 'Jeudi 18 Déc' },
+            { title: 'KATANGA LA DANSE DES SCORPIONS', director: 'DANI KOUYATÉ', country: 'BURKINA FASO', duration: 114, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'CO LM FICTION', date: 'Jeudi 18 Déc' },
+            { title: 'MY FATHER\'S SHADOW', director: 'AKINOLA DAVIES JR', country: 'NIGÉRIA', duration: 93, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'CO LM FICTION', date: 'Vendredi 19 Déc' },
+            { title: 'ONCE UPON A TIME IN GAZA', director: 'ARAB ET TARZAN NASSER', country: 'PALESTINE', duration: 90, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'CO LM FICTION', date: 'Vendredi 19 Déc' },
+            { title: 'L\'ODYSSÉE DE L\'OUBLI', director: 'MOKHTAR LADJIMI', country: 'TUNISIE', duration: 105, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'SÉANCE SPÉCIALE', date: 'Vendredi 19 Déc' },
+            { title: 'PROGRAMME 3 COMPÉTITION OFFICIELLE COURTS MÉTRAGES', director: '', country: '', duration: 103, language: 'Multiple', type: 'feature', cinema: 'ABC', category: 'CO COURTS MÉTRAGES', date: 'Samedi 20 Déc' },
+            { title: 'LATE SHIFT', director: 'PETRA VOLPE', country: 'SUISSE', duration: 92, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'CINÉMA DU MONDE', date: 'Samedi 20 Déc' },
+            { title: 'THE FALLING SKY LA CHUTE DU CIEL', director: 'ERYK ROCHA', country: 'BRÉSIL', duration: 108, language: 'VOSTEN', type: 'feature', cinema: 'ABC', category: 'CINÉMA AMÉRIQUE LATINE', date: 'Samedi 20 Déc' },
+            { title: 'FATHER MOTHER SISTER BROTHER', director: 'JIM JARMUSCH', country: 'USA', duration: 110, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'CINÉMA DU MONDE', date: 'Dimanche 14 Déc' },
+            { title: 'LE PROFESSEUR', director: 'MAHMOUD BEN MAHMOUD', country: 'TUNISIE', duration: 92, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Dimanche 14 Déc' },
+            { title: 'THE BURDENED', director: 'AMR GAMAL', country: 'YÉMEN', duration: 91, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'NOUVEAU CINÉMA ARABE', date: 'Dimanche 14 Déc' },
+            { title: 'FIVE EYES', director: 'KARIM DEBBAGH', country: 'MAROC', duration: 75, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'CO LM DOC', date: 'Lundi 15 Déc' },
+            { title: 'L\'HOMME QUI PLANTE LES BAOBABS', director: 'K.MICHEL ZONGO', country: 'BURKINA FASO', duration: 74, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'CO LM DOC', date: 'Lundi 15 Déc' },
+            { title: 'LITI LITI / THE ATTACHEMENT', director: 'MAMADOU KHOUMA GUEYE', country: 'SÉNÉGAL', duration: 76, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'CO LM DOC', date: 'Lundi 15 Déc' },
+            { title: 'PROGRAMME HOMMAGE PAULIN SOUMANOU VIEYRA', director: '', country: '', duration: 114, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Mardi 16 Déc' },
+            { title: 'BOOMERANG ATOMIC / CIMETIÈRE DE VIE', director: 'RACHID BOUCHAREB / MAMADOU MOUSTAPHA GUEYE', country: 'ALGÉRIE 21\' - VOSTEN / SÉNÉGAL 60\'', duration: 60, language: 'VOSTEN', type: 'feature', cinema: 'LE RIO', category: 'CARTE BLANCHE / CO LM DOC', date: 'Mardi 16 Déc' },
+            { title: 'LE PARA-DIS', director: 'MAJDI LAKHDAR', country: 'TUNISIE', duration: 82, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'CO LM DOC', date: 'Mardi 16 Déc' },
+            { title: 'NOTRE SEMENCE', director: 'ANIS LASSOUED', country: 'TUNISIE', duration: 80, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'CO LM DOC', date: 'Mercredi 17 Déc' },
+            { title: 'L\'HOMME QUI PLANTE LES BAOBABS', director: 'K.MICHEL ZONGO', country: 'BURKINA FASO', duration: 74, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'CO LM DOC', date: 'Mercredi 17 Déc' },
+            { title: 'LE VENT DES AURÈS', director: 'MOHAMMED LAKHDAR-HAMINA', country: 'ALGÉRIE', duration: 98, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Mercredi 17 Déc' },
+            { title: 'CINEMA KAWAKEB', director: 'MAHMOUD AL MASSAD', country: 'JORDANIE', duration: 78, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'CO LM DOC', date: 'Jeudi 18 Déc' },
+            { title: 'ON THE HILL', director: 'BELHASSEN HANDOUS', country: 'TUNISIE', duration: 77, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'CO LM DOC', date: 'Jeudi 18 Déc' },
+            { title: 'HOME MOVIE ON LOCATION', director: 'VIOLA SHAFIK', country: 'EGYPTE', duration: 100, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'CO LM DOC', date: 'Jeudi 18 Déc' },
+            { title: 'ANASTASIA DE BIZERTE', director: 'MAHMOUD BEN MAHMOUD', country: 'TUNISIE', duration: 57, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Vendredi 19 Déc' },
+            { title: 'TALES OF THE WOUNDED LAND', director: 'ABBAS FAHDEL', country: 'IRAK', duration: 120, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'CO LM DOC', date: 'Vendredi 19 Déc' },
+            { title: 'THE LIONS BY THE RIVER TIGRIS', director: 'ZARADASHT AHMED', country: 'IRAK', duration: 91, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'CO LM DOC', date: 'Vendredi 19 Déc' },
+            { title: 'PROGRAMME 1 COMPÉTITION OFFICIELLE COURTS MÉTRAGES', director: '', country: '', duration: 111, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'CO COURTS MÉTRAGES', date: 'Samedi 20 Déc' },
+            { title: 'PROGRAMME 2 COMPÉTITION OFFICIELLE COURTS MÉTRAGES', director: '', country: '', duration: 110, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'CO COURTS MÉTRAGES', date: 'Samedi 20 Déc' },
+            { title: 'PROGRAMME 3 COMPÉTITION OFFICIELLE COURTS MÉTRAGES', director: '', country: '', duration: 103, language: 'Multiple', type: 'feature', cinema: 'LE RIO', category: 'CO COURTS MÉTRAGES', date: 'Samedi 20 Déc' },
+            { title: 'PROGRAMME HOMMAGE PAULIN SOUMANOU VIEYRA', director: '', country: '', duration: 114, language: 'Multiple', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Dimanche 14 Déc' },
+            { title: 'LA MEULE', director: 'FREDJ TRABELSI', country: 'TUNISIE', duration: 73, language: 'Multiple', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Dimanche 14 Déc' },
+            { title: 'CINÉMA, MA RÉALITÉ', director: 'KAOUTHER BEN HANIA', country: 'TUNISIE', duration: 75, language: 'Multiple', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'CARTE BLANCHE TV5 MONDE', date: 'Lundi 15 Déc' },
+            { title: 'L\'ARBRE DU SOIR', director: 'ADEL BAKRI', country: 'TUNISIE', duration: 122, language: 'Multiple', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Lundi 15 Déc' },
+            { title: 'WALID CHMAIT, UNE VIE AU COEUR DU CINÉMA', director: 'SALIM SAAB', country: 'LIBAN', duration: 52, language: 'VOSTFR', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Mardi 16 Déc' },
+            { title: 'CHRONIQUE DES ANNÉES DE BRAISE', director: 'MOHAMED LAKHDAR-HAMINA', country: 'ALGÉRIE', duration: 177, language: 'VOSTFR', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Mardi 16 Déc' },
+            { title: 'L\'HOMME DE CENDRES', director: 'NOURI BOUZID', country: 'TUNISIE', duration: 110, language: 'Multiple', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'JCC CLASSIQUE FILMS RESTAURÉS', date: 'Mercredi 17 Déc' },
+            { title: 'CAMÉRA ARABE', director: 'FÉRID BOUGHEDIR', country: 'TUNISIE', duration: 65, language: 'Multiple', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'JCC CLASSIQUE FILMS RESTAURÉS', date: 'Mercredi 17 Déc' },
+            { title: 'WAJD, LES MILLE ET UNE VOIX SOUFIES', director: 'MAHMOUD BEN MAHMOUD', country: 'TUNISIE', duration: 93, language: 'Multiple', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Jeudi 18 Déc' },
+            { title: 'L\'HOMME DE CENDRES', director: 'NOURI BOUZID', country: 'TUNISIE', duration: 110, language: 'Multiple', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'JCC CLASSIQUE FILMS RESTAURÉS', date: 'Jeudi 18 Déc' },
+            { title: 'FINYÈ', director: 'SOULEYMANE CISSÉ', country: 'MALI', duration: 101, language: 'Multiple', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Jeudi 18 Déc' },
+            { title: 'WALID CHMAIT, UNE VIE AU COEUR DU CINÉMA', director: 'SALIM SAAB', country: 'LIBAN', duration: 52, language: 'VOSTFR', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Vendredi 19 Déc' },
+            { title: 'L\'AGENT SECRET', director: 'KLEBER MENDONÇA FILHO', country: 'BRÉSIL', duration: 160, language: 'VOSTFR', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'CINÉMA DU MONDE', date: 'Vendredi 19 Déc' },
+            { title: 'LE TEMPS DES CHARRUÉS', director: 'CHADLY HAJ MOHAMED', country: 'TUNISIE', duration: 80, language: 'Multiple', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Vendredi 19 Déc' },
+            { title: 'BONJOUR C\'EST MOI', director: 'FRUNZE DOVLATYAN', country: 'ARMÉNIE', duration: 137, language: 'VOSTFR', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'CINÉMA ARMÉNIEN', date: 'Samedi 20 Déc' },
+            { title: 'CRÉPUSCULE DES OMBRES', director: 'MOHAMMED LAKHDAR-HAMINA', country: 'ALGÉRIE', duration: 114, language: 'Multiple', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Samedi 20 Déc' },
+            { title: 'FLEUR D\'OUBLI', director: 'SALMA BACCAR', country: 'TUNISIE', duration: 100, language: 'Multiple', type: 'feature', cinema: 'TAHAR CHERIAA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Samedi 20 Déc' },
+            { title: 'LE SANG DU CONDOR', director: 'JORGE SANJINÉS', country: 'BOLIVIE', duration: 69, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'CINÉMA AMÉRIQUE LATINE', date: 'Dimanche 14 Déc' },
+            { title: 'LA NATURE LES SAISONS', director: 'ARTAVAZD PELECHIAN', country: 'ARMÉNIE', duration: 29, language: 'Multiple', type: 'short', cinema: 'IBN RACHIQ', category: 'CINÉMA ARMÉNIEN', date: 'Dimanche 14 Déc' },
+            { title: 'EL 47', director: 'MARCEL BARRENA', country: 'ESPAGNE', duration: 110, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'CINÉMA ESPAGNOL', date: 'Dimanche 14 Déc' },
+            { title: 'LA MEULE LE PÉTRIN', director: 'FREDJ TRABELSI', country: 'TUNISIE', duration: 73, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Lundi 15 Déc' },
+            { title: 'TONRATUM: THE STORY OF ARMENIA TOLD BY WOMEN', director: 'INNA MIKHITARYAN', country: 'ARMÉNIE', duration: 84, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'CINÉMA ARMÉNIEN', date: 'Lundi 15 Déc' },
+            { title: 'S\'AFFRANCHIR', director: 'MOHAMED ZRAN', country: 'TUNISIE', duration: 90, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Lundi 15 Déc' },
+            { title: 'PROGRAMME 1 PANORAMA COURTS MÉTRAGES', director: '', country: '', duration: 91, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Mardi 16 Déc' },
+            { title: 'LE SANG DU CONDOR', director: 'JORGE SANJINÉS', country: 'BOLIVIE', duration: 69, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'CINÉMA AMÉRIQUE LATINE', date: 'Mardi 16 Déc' },
+            { title: 'SORDA', director: 'EVA LIBERTAD', country: 'ESPAGNE', duration: 109, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'CINÉMA ESPAGNOL', date: 'Mardi 16 Déc' },
+            { title: 'L\'ÉTÉ DES POISSONS VOLANTS', director: 'MARCELA SAID', country: 'CHILI', duration: 95, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'CINÉMA AMÉRIQUE LATINE', date: 'Mercredi 17 Déc' },
+            { title: 'FIFAK PROGRAMME COURTS-MÉTRAGES', director: '', country: '', duration: 76, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'FILMS FIFAK', date: 'Mercredi 17 Déc' },
+            { title: 'CRÉPUSCULE DES OMBRES', director: 'MOHAMMED LAKHDAR-HAMINA', country: 'ALGÉRIE', duration: 114, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Mercredi 17 Déc' },
+            { title: 'NAHLA', director: 'FAROUK BELLOUFA', country: 'ALGÉRIE', duration: 111, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Jeudi 18 Déc' },
+            { title: 'SAKALING HINDI MAKARATING', director: 'ICE IDANAN', country: 'PHILLIPINES', duration: 87, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'CINÉMA PHILIPPIN', date: 'Jeudi 18 Déc' },
+            { title: 'CAMÉRA ARABE', director: 'FÉRID BOUGHEDIR', country: 'TUNISIE', duration: 65, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'JCC CLASSIQUE FILMS RESTAURÉS', date: 'Jeudi 18 Déc' },
+            { title: 'UNDER THE SKY OF DAMASCUS', director: 'HEBA KHALED, TALAL DERKI, ALI WAJEEH', country: 'SYRIE', duration: 88, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'NOUVEAU CINÉMA ARABE', date: 'Vendredi 19 Déc' },
+            { title: 'THY WOMB', director: 'BRILLANTE MENDOZA', country: 'PHILLIPINES', duration: 106, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'CINÉMA PHILIPPIN', date: 'Vendredi 19 Déc' },
+            { title: 'L\'ARBRE DU SOIR', director: 'ADEL BAKRI', country: 'TUNISIE', duration: 122, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Vendredi 19 Déc' },
+            { title: 'GOSPEL OF THE BEAST', director: 'SHERON DAYOC', country: 'PHILLIPINES', duration: 85, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'CINÉMA PHILIPPIN', date: 'Samedi 20 Déc' },
+            { title: 'HANGING GARDENS', director: 'AHMED AL-DARADJI', country: 'IRAK', duration: 117, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'NOUVEAU CINÉMA ARABE', date: 'Samedi 20 Déc' },
+            { title: 'PROGRAMME 2 PANORAMA COURTS MÉTRAGES', director: '', country: '', duration: 100, language: 'Multiple', type: 'feature', cinema: 'IBN RACHIQ', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Samedi 20 Déc' },
+            { title: 'PROGRAMME 1 PANORAMA COURTS MÉTRAGES', director: '', country: '', duration: 91, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Dimanche 14 Déc' },
+            { title: 'LA MEULE', director: 'FREDJ TRABELSI', country: 'TUNISIE', duration: 73, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Dimanche 14 Déc' },
+            { title: 'THY WOMB', director: 'BRILLANTE MENDOZA', country: 'PHILLIPINES', duration: 106, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'CINÉMA PHILIPPIN', date: 'Lundi 15 Déc' },
+            { title: 'PROGRAMME 2 PANORAMA COURTS MÉTRAGES', director: '', country: '', duration: 100, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Lundi 15 Déc' },
+            { title: 'THE MADMAN', director: 'AKRAM ADOUANI', country: 'TUNISIE', duration: 90, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Lundi 15 Déc' },
+            { title: 'SAKALING HINDI MAKARATING', director: 'ICE IDANAN', country: 'PHILLIPINES', duration: 87, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'CINÉMA PHILIPPIN', date: 'Mardi 16 Déc' },
+            { title: 'PROGRAMME 3 PANORAMA COURTS MÉTRAGES', director: '', country: '', duration: 103, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Mardi 16 Déc' },
+            { title: 'LA VILLA DAR ENNAS', director: 'MOHAMED DAMMAK', country: 'TUNISIE', duration: 83, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Mardi 16 Déc' },
+            { title: 'PROGRAMME 4 PANORAMA COURTS MÉTRAGES', director: '', country: '', duration: 104, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Mercredi 17 Déc' },
+            { title: 'SOUS LES FIGUIERS', director: 'ERIGE SEHIRI', country: 'TUNISIE', duration: 92, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Mercredi 17 Déc' },
+            { title: 'L\'ARBRE DU SOIR', director: 'ADEL BAKRI', country: 'TUNISIE', duration: 122, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Mercredi 17 Déc' },
+            { title: 'PROGRAMME 5 PANORAMA COURTS MÉTRAGES', director: '', country: '', duration: 89, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Jeudi 18 Déc' },
+            { title: 'S\'AFFRANCHIR', director: 'MOHAMED ZRAN', country: 'TUNISIE', duration: 90, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Jeudi 18 Déc' },
+            { title: 'CAMÉRA ARABE', director: 'FÉRID BOUGHEDIR', country: 'TUNISIE', duration: 65, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'JCC CLASSIQUE FILMS RESTAURÉS', date: 'Jeudi 18 Déc' },
+            { title: 'FLEUR D\'OUBLI', director: 'SALMA BACCAR', country: 'TUNISIE', duration: 100, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Vendredi 19 Déc' },
+            { title: 'PROGRAMME 6 PANORAMA COURTS MÉTRAGES', director: '', country: '', duration: 93, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Vendredi 19 Déc' },
+            { title: 'THE MADMAN', director: 'AKRAM ADOUANI', country: 'TUNISIE', duration: 90, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Vendredi 19 Déc' },
+            { title: 'INSIANG', director: 'LINO BROCKA', country: 'PHILLIPINES', duration: 95, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'CINÉMA PHILIPPIN', date: 'Samedi 20 Déc' },
+            { title: 'HANGING GARDENS', director: 'AHMED AL-DARADJI', country: 'IRAK', duration: 117, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'NOUVEAU CINÉMA ARABE', date: 'Samedi 20 Déc' },
+            { title: 'GOSPEL OF THE BEAST', director: 'SHERON DAYOC', country: 'PHILLIPINES', duration: 85, language: 'Multiple', type: 'feature', cinema: 'COLISÉE', category: 'CINÉMA PHILIPPIN', date: 'Samedi 20 Déc' },
+            { title: 'TRILOGIE DOCUMENTAIRE MAROC', director: '', country: 'MAROC', duration: 90, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'CINÉMA MAROCAIN', date: 'Dimanche 14 Déc' },
+            { title: 'DREAMERS', director: 'IMED MARZOUK', country: 'TUNISIE', duration: 95, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Dimanche 14 Déc' },
+            { title: 'PROGRAMME 2 COMPÉTITION OFFICIELLE COURTS MÉTRAGES', director: '', country: '', duration: 110, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'CO COURTS MÉTRAGES', date: 'Dimanche 14 Déc' },
+            { title: 'TRILOGIE DOCUMENTAIRE MAROC', director: '', country: 'MAROC', duration: 90, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'CINÉMA MAROCAIN', date: 'Lundi 15 Déc' },
+            { title: 'THE BURDENED', director: 'AMR GAMAL', country: 'YÉMEN', duration: 91, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'NOUVEAU CINÉMA ARABE', date: 'Lundi 15 Déc' },
+            { title: 'LA VILLA DAR ENNAS', director: 'MOHAMED DAMMAK', country: 'TUNISIE', duration: 83, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Lundi 15 Déc' },
+            { title: 'LES FILMS DE L\'ARMÉE', director: '', country: 'ARMÉNIE', duration: 75, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'CINÉMA ARMÉNIEN', date: 'Mardi 16 Déc' },
+            { title: 'PROGRAMME 3 COMPÉTITION OFFICIELLE COURTS MÉTRAGES', director: '', country: '', duration: 103, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'CO COURTS MÉTRAGES', date: 'Mardi 16 Déc' },
+            { title: 'FLEUR D\'OUBLI', director: 'SALMA BACCAR', country: 'TUNISIE', duration: 100, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Mardi 16 Déc' },
+            { title: 'LE TEMPS DES CHARRUÉS', director: 'CHADLY HAJ MOHAMED', country: 'TUNISIE', duration: 80, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Mercredi 17 Déc' },
+            { title: 'PROGRAMME 1 COMPÉTITION OFFICIELLE COURTS MÉTRAGES', director: '', country: '', duration: 111, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'CO COURTS MÉTRAGES', date: 'Mercredi 17 Déc' },
+            { title: 'DONGA', director: 'MUHANNAD LAMIN', country: 'LYBIE', duration: 90, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'NOUVEAU CINÉMA ARABE', date: 'Mercredi 17 Déc' },
+            { title: 'HANGING GARDENS', director: 'AHMED AL-DARADJI', country: 'IRAK', duration: 117, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'NOUVEAU CINÉMA ARABE', date: 'Jeudi 18 Déc' },
+            { title: 'TONRATUM: THE STORY OF ARMENIA TOLD BY WOMEN', director: 'INNA MIKHITARYAN', country: 'ARMÉNIE', duration: 84, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'CINÉMA ARMÉNIEN', date: 'Jeudi 18 Déc' },
+            { title: 'THE BURDENED', director: 'AMR GAMAL', country: 'YÉMEN', duration: 91, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'NOUVEAU CINÉMA ARABE', date: 'Jeudi 18 Déc' },
+            { title: 'DREAMERS', director: 'IMED MARZOUK', country: 'TUNISIE', duration: 95, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Vendredi 19 Déc' },
+            { title: 'S\'AFFRANCHIR', director: 'MOHAMED ZRAN', country: 'TUNISIE', duration: 90, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Vendredi 19 Déc' },
+            { title: 'PROGRAMME 4 PANORAMA COURTS MÉTRAGES', director: '', country: '', duration: 104, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Vendredi 19 Déc' },
+            { title: 'FIFAK PROGRAMME COURTS-MÉTRAGES', director: '', country: '', duration: 76, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'FILMS FIFAK', date: 'Samedi 20 Déc' },
+            { title: 'PROGRAMME 5 PANORAMA COURTS MÉTRAGES', director: '', country: '', duration: 89, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Samedi 20 Déc' },
+            { title: 'PROGRAMME 6 PANORAMA COURTS MÉTRAGES', director: '', country: '', duration: 93, language: 'Multiple', type: 'feature', cinema: 'AFRICA', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Samedi 20 Déc' },
+            { title: 'LA CHUTE DU CIEL', director: 'ERYK ROCHA', country: 'BRÉSIL', duration: 108, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'CINÉMA AMÉRIQUE LATINE', date: 'Dimanche 14 Déc' },
+            { title: 'IN THE LAND OF ARTO', director: 'TAMARA STEPANYAN', country: 'ARMÉNIE', duration: 105, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'CINÉMA ARMÉNIEN', date: 'Dimanche 14 Déc' },
+            { title: 'YOU WILL DIE AT 20', director: 'AMJAD ABU ALALA', country: 'SOUDAN', duration: 104, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'NOUVEAU CINÉMA ARABE', date: 'Lundi 15 Déc' },
+            { title: 'TONRATUM: THE STORY OF ARMENIA TOLD BY WOMEN', director: 'INNA MIKHITARYAN', country: 'ARMÉNIE', duration: 84, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'CINÉMA ARMÉNIEN', date: 'Lundi 15 Déc' },
+            { title: 'UTAMA', director: 'ALEJANDRO LOAYZA GRISI', country: 'BOLIVIE', duration: 87, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'CINÉMA AMÉRIQUE LATINE', date: 'Lundi 15 Déc' },
+            { title: 'KOMEDIE ELAHI DIVINE COMEDY', director: 'ALI ASGARI', country: 'IRAN', duration: 98, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'CINÉMA DU MONDE', date: 'Lundi 15 Déc' },
+            { title: 'L\'ÉTÉ DES POISSONS VOLANTS', director: 'MARCELA SAID', country: 'CHILI', duration: 95, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'CINÉMA AMÉRIQUE LATINE', date: 'Mardi 16 Déc' },
+            { title: 'BONJOUR C\'EST MOI', director: 'FRUNZE DOVLATYAN', country: 'ARMÉNIE', duration: 137, language: 'VOSTFR', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'CINÉMA ARMÉNIEN', date: 'Mardi 16 Déc' },
+            { title: 'PROGRAMME 1 PANORAMA COURTS MÉTRAGES', director: '', country: '', duration: 91, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Mardi 16 Déc' },
+            { title: 'L\'ÉTÉ DES POISSONS VOLANTS', director: 'MARCELA SAID', country: 'CHILI', duration: 95, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'CINÉMA AMÉRIQUE LATINE', date: 'Mercredi 17 Déc' },
+            { title: 'DREAMERS', director: 'IMED MARZOUK', country: 'TUNISIE', duration: 95, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Mercredi 17 Déc' },
+            { title: 'THE VOICE OF HIND RAJAB', director: 'KAOUTHER BEN HANIA', country: 'TUNISIE', duration: 90, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'CO LM FICTION', date: 'Mercredi 17 Déc' },
+            { title: 'PROGRAMME 2 PANORAMA COURTS MÉTRAGES', director: '', country: '', duration: 100, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Jeudi 18 Déc' },
+            { title: 'THE MADMAN', director: 'AKRAM ADOUANI', country: 'TUNISIE', duration: 90, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Jeudi 18 Déc' },
+            { title: 'SOUS LES FIGUIERS', director: 'ERIGE SEHIRI', country: 'TUNISIE', duration: 92, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'CO LM FICTION', date: 'Jeudi 18 Déc' },
+            { title: 'TEZETA', director: 'ARAMAZT KALAYJIAN & GAREGIN PAPOYAN', country: 'ARMÉNIE', duration: 100, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'CINÉMA ARMÉNIEN', date: 'Vendredi 19 Déc' },
+            { title: 'ONE MORE SHOW', director: 'MAI SAAD & AHMAD AL DANAF', country: 'EGYPTE', duration: 72, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'HORS COMPÉTITION', date: 'Vendredi 19 Déc' },
+            { title: 'ON THE HILL', director: 'BELHASSEN HANDOUS', country: 'TUNISIE', duration: 77, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'CO LM DOC', date: 'Vendredi 19 Déc' },
+            { title: 'WHERE THE WIND COMES FROM', director: 'AMEL GUELLATY', country: 'TUNISIE', duration: 99, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'CO LM FICTION', date: 'Vendredi 19 Déc' },
+            { title: 'ROMERIA', director: 'CARLA SIMÓN', country: 'ESPAGNE', duration: 115, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'CINÉMA ESPAGNOL', date: 'Samedi 20 Déc' },
+            { title: 'L\'AGENT SECRET', director: 'KLEBER MENDONÇA FILHO', country: 'BRÉSIL', duration: 160, language: 'VOSTFR', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'CINÉMA DU MONDE', date: 'Samedi 20 Déc' },
+            { title: 'PROGRAMME 3 PANORAMA COURTS MÉTRAGES', director: '', country: '', duration: 103, language: 'Multiple', type: 'feature', cinema: 'ALHAMBRA ZEPHYR', category: 'PANORAMA CINÉMA TUNISIEN', date: 'Samedi 20 Déc' },
+            { title: 'FIVE EYES', director: 'KARIM DEBBAGH', country: 'MAROC', duration: 75, language: 'Multiple', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM DOC', date: 'Dimanche 14 Déc' },
+            { title: 'ONCE UPON A TIME IN GAZA', director: 'ARAB ET TARZAN NASSER', country: 'PALESTINE', duration: 90, language: 'Multiple', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM FICTION', date: 'Dimanche 14 Déc' },
+            { title: 'MY FATHER\'S SHADOW', director: 'AKINOLA DAVIES JR', country: 'NIGÉRIA', duration: 93, language: 'Multiple', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM FICTION', date: 'Dimanche 14 Déc' },
+            { title: 'KATANGA LA DANSE DES SCORPIONS', director: 'DANI KOUYATÉ', country: 'BURKINA FASO', duration: 114, language: 'Multiple', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM FICTION', date: 'Lundi 15 Déc' },
+            { title: 'LITI LITI / THE ATTACHEMENT', director: 'MAMADOU KHOUMA GUEYE', country: 'SÉNÉGAL', duration: 76, language: 'Multiple', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM DOC', date: 'Lundi 15 Déc', time: '15:30' },
+            { title: 'FIVE EYES', director: 'KARIM DEBBAGH', country: 'MAROC', duration: 75, language: 'Multiple', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM DOC', date: 'Mardi 16 Déc', time: '18:30' },
+            { title: 'L\'HOMME QUI PLANTE LES BAOBABS', director: 'K.MICHEL ZONGO', country: 'BURKINA FASO', duration: 74, language: 'Multiple', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM DOC', date: 'Mardi 16 Déc', time: '21:00' },
+            { title: 'MY FATHER\'S SHADOW', director: 'AKINOLA DAVIES JR', country: 'NIGÉRIA', duration: 93, language: 'Multiple', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM FICTION', date: 'Mardi 16 Déc', time: '21:00' },
+            { title: 'PROGRAMME HOMMAGE PAULIN SOUMANOU VIEYRA', director: '', country: '', duration: 114, language: 'Multiple', type: 'feature', cinema: 'L\'AGORA', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Mercredi 17 Déc', time: '15:30' },
+            { title: 'THE OTHER... RAEBURN', director: 'DAVID-PIERRE FILA', country: 'RÉPUBLIQUE DU CONGO', duration: 113, language: 'VOSTFR', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM DOC', date: 'Mercredi 17 Déc', time: '18:30' },
+            { title: 'CINEMA KAWAKEB', director: 'MAHMOUD AL MASSAD', country: 'JORDANIE', duration: 78, language: 'Multiple', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM DOC', date: 'Mercredi 17 Déc', time: '21:00' },
+            { title: 'HOME MOVIE ON LOCATION', director: 'VIOLA SHAFIK', country: 'EGYPTE', duration: 100, language: 'VOSTFR', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM DOC', date: 'Jeudi 18 Déc', time: '15:30' },
+            { title: 'NOTRE SEMENCE', director: 'ANIS LASSOUED', country: 'TUNISIE', duration: 80, language: 'Multiple', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM DOC', date: 'Jeudi 18 Déc', time: '18:30' },
+            { title: 'ON THE HILL', director: 'BELHASSEN HANDOUS', country: 'TUNISIE', duration: 77, language: 'Multiple', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM DOC', date: 'Jeudi 18 Déc', time: '21:00' },
+            { title: 'BOOMERANG ATOMIC', director: 'RACHID BOUCHAREB', country: 'ALGÉRIE', duration: 21, language: 'VOSTEN', type: 'short', cinema: 'L\'AGORA', category: 'CARTE BLANCHE', date: 'Vendredi 19 Déc', time: '13:00' },
+            { title: 'CIMETIÈRE DE VIE', director: 'MAMADOU MOUSTAPHA GUEYE', country: 'SÉNÉGAL', duration: 60, language: 'VOSTEN', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM DOC', date: 'Vendredi 19 Déc', time: '15:30' },
+            { title: 'LE PARA-DIS', director: 'MAJDI LAKHDAR', country: 'TUNISIE', duration: 82, language: 'Multiple', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM DOC', date: 'Vendredi 19 Déc', time: '18:30' },
+            { title: 'THE LIONS BY THE RIVER TIGRIS', director: 'ZARADASHT AHMED', country: 'IRAK', duration: 91, language: 'Multiple', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM DOC', date: 'Samedi 20 Déc', time: '15:30' },
+            { title: 'TALES OF THE WOUNDED LAND', director: 'ABBAS FAHDEL', country: 'IRAK', duration: 120, language: 'Multiple', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM DOC', date: 'Samedi 20 Déc', time: '18:30' },
+            { title: 'WHERE THE WIND COMES FROM', director: 'AMEL GUELLATY', country: 'TUNISIE', duration: 99, language: 'Multiple', type: 'feature', cinema: 'L\'AGORA', category: 'CO LM FICTION', date: 'Samedi 20 Déc', time: '21:00' },
+            { title: 'CERF-VOLANT', director: 'RANDA CHAHAL SABBAGH', country: 'LIBAN', duration: 80, language: 'Multiple', type: 'feature', cinema: 'CINEMADART', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Dimanche 14 Déc', time: '15:30' },
+            { title: 'PALESTINE 36', director: 'ANNEMARIE JACIR', country: 'PALESTINE', duration: 119, language: 'Multiple', type: 'feature', cinema: 'CINEMADART', category: 'FILM D\'OUVERTURE', date: 'Dimanche 14 Déc', time: '18:30' },
+            { title: 'THE LAST VIKING', director: 'ANDERS THOMAS JENSEN', country: 'DANEMARK', duration: 116, language: 'Multiple', type: 'feature', cinema: 'CINEMADART', category: 'CINÉMA DU MONDE', date: 'Dimanche 14 Déc', time: '21:00' },
+            { title: 'LA NOCE', director: 'COLLECTIF LE NOUVEAU THÉÂTRE DE TUNIS', country: 'TUNISIE', duration: 90, language: 'Multiple', type: 'feature', cinema: 'CINEMADART', category: 'JCC CLASSIQUE FILMS RESTAURÉS', date: 'Lundi 15 Déc', time: '15:30' },
+            { title: 'ROMERIA', director: 'CARLA SIMÓN', country: 'ESPAGNE', duration: 115, language: 'Multiple', type: 'feature', cinema: 'CINEMADART', category: 'CINÉMA ESPAGNOL', date: 'Lundi 15 Déc', time: '21:00' },
+            { title: 'L\'AGENT SECRET', director: 'KLEBER MENDONÇA FILHO', country: 'BRÉSIL', duration: 160, language: 'VOSTFR', type: 'feature', cinema: 'CINEMADART', category: 'CINÉMA DU MONDE', date: 'Lundi 15 Déc', time: '18:30' },
+            { title: 'RETURN TO HAIFA', director: 'KASSEM HAWAL', country: 'IRAK - PALESTINE', duration: 76, language: 'Multiple', type: 'feature', cinema: 'CINEMADART', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Mardi 16 Déc', time: '15:30' },
+            { title: 'NAHLA', director: 'FAROUK BELLOUFA', country: 'ALGÉRIE', duration: 111, language: 'Multiple', type: 'feature', cinema: 'CINEMADART', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Mardi 16 Déc', time: '18:30' },
+            { title: 'JAD GHOSN', director: '', country: 'LIBAN', duration: 111, language: 'VO', type: 'feature', cinema: 'CINEMADART', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Mercredi 17 Déc', time: '15:30' },
+            { title: 'CHRONIQUE DES ANNÉES DE BRAISE', director: 'MOHAMED LAKHDAR-HAMINA', country: 'ALGÉRIE', duration: 177, language: 'VOSTFR', type: 'feature', cinema: 'CINEMADART', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Mercredi 17 Déc', time: '21:00' },
+            { title: 'EL 47', director: 'MARCEL BARRENA', country: 'ESPAGNE', duration: 110, language: 'Multiple', type: 'feature', cinema: 'CINEMADART', category: 'CINÉMA ESPAGNOL', date: 'Jeudi 18 Déc', time: '15:30' },
+            { title: 'LA CASA', director: 'ALEX MONTOYA', country: 'ESPAGNE', duration: 80, language: 'Multiple', type: 'feature', cinema: 'CINEMADART', category: 'CINÉMA ESPAGNOL', date: 'Jeudi 18 Déc', time: '18:30' },
+            { title: 'SORDA', director: 'EVA LIBERTAD', country: 'ESPAGNE', duration: 109, language: 'Multiple', type: 'feature', cinema: 'CINEMADART', category: 'CINÉMA ESPAGNOL', date: 'Jeudi 18 Déc', time: '21:00' },
+            { title: 'GAZA - FROM GROUND ZERO PROGRAMME 1', director: '', country: '', duration: 81, language: 'Multiple', type: 'feature', cinema: 'CINEMADART', category: 'LA PALESTINE AU CŒUR DES JCC', date: 'Vendredi 19 Déc', time: '13:00' },
+            { title: 'GAZA - FROM GROUND ZERO PROGRAMME 2', director: '', country: '', duration: 85, language: 'Multiple', type: 'feature', cinema: 'CINEMADART', category: 'LA PALESTINE AU CŒUR DES JCC', date: 'Vendredi 19 Déc', time: '15:30' },
+            { title: 'LE VENT DES AURÈS', director: 'MOHAMMED LAKHDAR-HAMINA', country: 'ALGÉRIE', duration: 98, language: 'Multiple', type: 'feature', cinema: 'CINEMADART', category: 'HOMMAGES ET CÉLÉBRATIONS', date: 'Samedi 20 Déc', time: '15:30' },
+            { title: 'ROUND 13', director: 'MOHAMED ALI NAHDI', country: 'TUNISIE', duration: 90, language: 'Multiple', type: 'feature', cinema: 'CINEMADART', category: 'SÉANCE SPÉCIALE', date: 'Samedi 20 Déc', time: '21:00' }
+        ];
+        let filteredMovies = [...allMoviesData]; let currentView = 'grid'; let showTodaysMoviesFilter = false; let showCOOnlyFilter = false; let todayDate = null;
+
+        // Load and map data from json.json.txt
+        async function loadData() {
+            try {
+                const res = await fetch('json.json.txt');
+                const data = await res.json();
+                allMoviesData = data.flatMap(day => {
+                    const venue = day.venue || '';
+                    const date = day.date || '';
+                    return (day.films || []).map(film => {
+                        const cd = film.country_duration || '';
+                        let duration = '';
+                        let language = 'N/A';
+                        let country = cd.trim();
+                        const match = cd.match(/(\d+)'\s*(VO|VOSTFR|VF|VOSE|VOSTA)?$/i);
+                        if (match) {
+                            duration = parseInt(match[1], 10);
+                            language = match[2] || 'N/A';
+                            country = cd.slice(0, match.index).trim();
+                        }
+                        return {
+                            title: film.title_translated || '',
+                            arabicTitle: film.title_original || '',
+                            director: film.director || '',
+                            country,
+                            duration,
+                            language,
+                            type: 'feature',
+                            cinema: venue,
+                            category: film.genre || '',
+                            date,
+                            time: film.time || ''
+                        };
+                    });
+                });
+                filteredMovies = [...allMoviesData];
+                initializeApp();
+            } catch (e) {
+                console.error('Failed to load data from json.json.txt', e);
+            }
+        }
+
+        function initializeApp() {
+            populateCategoryFilter();
+            populateCinemaFilter();
+            applyFilters();
+        }
+
+        function populateCinemaFilter() {
+            const select = document.getElementById('cinemaFilter');
+            // Preserve the first "All Cinemas" option
+            const firstOptionLabel = select.querySelector('option[value=""]')?.textContent || 'All Cinemas';
+            select.innerHTML = `<option value="">${firstOptionLabel}</option>`;
+            const cinemas = [...new Set(allMoviesData.map(m => m.cinema).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+            cinemas.forEach(name => {
+                const option = document.createElement('option');
+                option.value = name;
+                option.textContent = name;
+                select.appendChild(option);
+            });
+        }
+
+        function populateCategoryFilter() {
+            const categoryFilter = document.getElementById('categoryFilter');
+            // Preserve the first "All Categories" option
+            const firstOptionLabel = categoryFilter.querySelector('option[value=""]')?.textContent || 'All Categories';
+            categoryFilter.innerHTML = `<option value="">${firstOptionLabel}</option>`;
+            const categories = [...new Set(allMoviesData.map(movie => movie.category).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categoryFilter.appendChild(option);
+            });
+        }
+
+        let selectedCountriesFilter = [];
+        // Canonical country names used for normalization and display
+        const CANONICAL_COUNTRIES = [
+            'TUNISIE','ALGÉRIE','ARABIE SAOUDITE','ARMÉNIE','BOLIVIE','BRÉSIL','BURKINA FASO','CHILI',
+            'DANEMARK','EGYPTE','ESPAGNE','FRANCE','IRAK','IRAN','JORDANIE','LIBAN','LYBIE','MALI',
+            'MAROC','NIGÉRIA','PALESTINE','PHILLIPINES','RÉPUBLIQUE DU CONGO','SÉNÉGAL','SOUDAN',
+            'SUISSE','ALLEMAGNE','SYRIE','TCHAD','URUGUAY','USA','YÉMEN'
+        ];
+        function simpleNormalize(raw) {
+            return (raw || '')
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .trim();
+        }
+        function normalizeCountryPart(raw) {
+            let s = (raw || '').trim();
+            s = s.split(' - ')[0].trim();
+            s = s.replace(/\b\d+\s*(?:'|min)\b.*$/i, '').trim();
+            s = s.replace(/\b(VOSTFR|VOSTEN|VOSTA|VOSE|VOST|VO|VF)\b$/i, '').trim();
+            // Attempt to map to a canonical country name if present in the string
+            const ns = simpleNormalize(s);
+            let best = null; let bestLen = 0;
+            for (const cc of CANONICAL_COUNTRIES) {
+                const cn = simpleNormalize(cc);
+                const idx = ns.lastIndexOf(cn);
+                if (idx >= 0 && cn.length > bestLen) {
+                    best = cc; bestLen = cn.length;
+                }
+            }
+            return best || s;
+        }
+        function normalizeKeyCountry(raw) {
+            return simpleNormalize(normalizeCountryPart(raw));
+        }
+
+        // Specific multi-session overrides to split combined titles into distinct projections
+        const MULTI_SESSION_OVERRIDES = [
+            {
+                match: { title: 'LA NATURE LES SAISONS', cinema: 'IBN RACHIQ' },
+                projections: [
+                    { title: 'LA NATURE', duration: 63 },
+                    { title: 'LES SAISONS', duration: 29 }
+                ]
+            }
+        ];
+
+        function parseTimeToMinutes(t) {
+            if (!t) return null;
+            const m = String(t).match(/(\d{1,2}):(\d{2})/);
+            if (!m) return null;
+            const h = parseInt(m[1], 10);
+            const min = parseInt(m[2], 10);
+            if (isNaN(h) || isNaN(min)) return null;
+            return h * 60 + min;
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const cinema = document.getElementById('cinemaFilter').value;
+            const category = document.getElementById('categoryFilter').value;
+            const timeFromStr = (document.getElementById('timeFrom').value || '').trim();
+            const timeFromMin = parseTimeToMinutes(timeFromStr);
+
+            filteredMovies = allMoviesData.filter(movie => {
+                const arabic = (movie.arabicTitle || '').toLowerCase();
+                const textMatch = movie.title.toLowerCase().includes(searchTerm) ||
+                                arabic.includes(searchTerm) ||
+                                movie.director.toLowerCase().includes(searchTerm) ||
+                                movie.country.toLowerCase().includes(searchTerm);
+
+                const cinemaMatch = !cinema || movie.cinema === cinema;
+                const categoryMatch = !category || movie.category === category;
+                const coOnlyMatch = !showCOOnlyFilter || /^\s*CO\b/.test(movie.category || '');
+                const todayMatch = !showTodaysMoviesFilter || movie.date === todayDate;
+                const movieTimeMin = parseTimeToMinutes(movie.time);
+                const timeMatch = !timeFromMin || (movieTimeMin !== null && movieTimeMin >= timeFromMin);
+                const movieCountriesBase = movie.country
+                    .split(/\s*\/\s*|\s*,\s*/)
+                    .map(c => normalizeCountryPart(c))
+                    .filter(Boolean);
+                const selectedKeys = selectedCountriesFilter.map(c => normalizeKeyCountry(c));
+                const countrySelectionMatch = selectedCountriesFilter.length === 0 ||
+                    movieCountriesBase.some(c => selectedKeys.includes(normalizeKeyCountry(c)));
+
+                return textMatch && cinemaMatch && categoryMatch && coOnlyMatch && todayMatch && timeMatch && countrySelectionMatch;
+            });
+
+            updateStats();
+            renderMovies();
+        }
+
+        function computeTodayDateLabel() {
+            const dates = [...new Set(allMoviesData.map(m => m.date).filter(Boolean))];
+            const today = new Date();
+            const todayDay = today.getDate();
+            const todayMonth = today.getMonth() + 1; // 1-12
+
+            const normalize = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace('.', '');
+            const monthMap = {
+                'jan': 1, 'janv': 1,
+                'fev': 2, 'fevr': 2, 'fevrier': 2,
+                'mar': 3, 'mars': 3,
+                'avr': 4, 'avril': 4,
+                'mai': 5,
+                'juin': 6,
+                'juil': 7, 'juillet': 7,
+                'aout': 8, 'aout': 8,
+                'sept': 9, 'sep': 9,
+                'oct': 10, 'octobre': 10,
+                'nov': 11, 'novembre': 11,
+                'dec': 12, 'decembre': 12
+            };
+
+            for (const d of dates) {
+                const m = d.match(/(\d{1,2})\s+([A-Za-zÀ-ÿ\.]+)/);
+                if (!m) continue;
+                const dayNum = parseInt(m[1], 10);
+                const monthTok = normalize(m[2]);
+                const monthNum = monthMap[monthTok] || monthMap[monthTok.slice(0,3)];
+                if (dayNum === todayDay && monthNum === todayMonth) {
+                    return d;
+                }
+            }
+            // Fallback: use the first date in the dataset
+            return dates[0] || null;
+        }
+
+        function toggleTodaysMovies() {
+            showTodaysMoviesFilter = !showTodaysMoviesFilter;
+            document.getElementById('todayBtn').classList.toggle('active', showTodaysMoviesFilter);
+            if (showTodaysMoviesFilter) {
+                todayDate = computeTodayDateLabel();
+            }
+            applyFilters();
+        }
+
+        function toggleCOOnly() {
+            showCOOnlyFilter = !showCOOnlyFilter;
+            document.getElementById('coBtn').classList.toggle('active', showCOOnlyFilter);
+            applyFilters();
+        }
+
+        function updateStats() {
+            document.getElementById('totalMovies').textContent = filteredMovies.length;
+            
+            const countries = [...new Set(filteredMovies
+                .map(movie => movie.country
+                    .split(/\s*\/\s*|\s*,\s*/)
+                    .map(c => normalizeCountryPart(c))).flat())];
+            document.getElementById('countryCount').textContent = countries
+                .filter(c => c && normalizeKeyCountry(c) !== 'multiple').length;
+
+            const cinemaCount = [...new Set(filteredMovies.map(movie => movie.cinema).filter(c => c && c.trim().length > 0))].length;
+            document.getElementById('cinemaCount').textContent = cinemaCount;
+        }
+
+        // Parse a single country/duration/language part like "TUNISIE 12' - VOSTEN"
+        function parseCountryDurationPart(part) {
+            if (!part) {
+                return { country: 'N/A', duration: null, language: '' };
+            }
+            const raw = part.trim();
+            // Split language hint after a hyphen, e.g., "ALGÉRIE 21' - VOSTEN"
+            const [left, right] = raw.split(/\s+-\s+/);
+            const lang = right ? right.trim() : '';
+            // Extract country name and an optional minutes number before a quote or the word min
+            const m = left.match(/^(.*?)\s*(?:([0-9]{1,3})\s*(?:'|\s*min))?\s*$/i);
+            const country = (m && m[1] ? m[1].trim() : normalizeCountryPart(left));
+            const duration = m && m[2] ? parseInt(m[2], 10) : null;
+            return { country, duration, language: lang };
+        }
+
+        // Try to extract a title and director encoded before the country in a mixed part
+        function extractTitleDirectorFromCountryPart(part, parentMovie) {
+            const raw = (part || '').trim();
+            let countryToken = null;
+            for (const cc of CANONICAL_COUNTRIES) {
+                if (raw.includes(cc)) { countryToken = cc; break; }
+            }
+            const pre = countryToken ? raw.slice(0, raw.indexOf(countryToken)).trim() : raw;
+            const npre = simpleNormalize(pre);
+            // Find best title candidate from dataset within same cinema/date to avoid mismatches
+            let titleCand = null, titleLen = 0;
+            for (const m of allMoviesData) {
+                if (parentMovie && m.date !== parentMovie.date) continue;
+                if (parentMovie && m.cinema !== parentMovie.cinema) continue;
+                const nt = simpleNormalize(m.title);
+                if (nt && npre.includes(nt) && nt.length > titleLen) {
+                    titleCand = m; titleLen = nt.length;
+                }
+            }
+            // Find director candidate similarly
+            let dirCand = null, dirLen = 0;
+            for (const m of allMoviesData) {
+                if (parentMovie && m.date !== parentMovie.date) continue;
+                if (parentMovie && m.cinema !== parentMovie.cinema) continue;
+                const nd = simpleNormalize(m.director || '');
+                if (!nd) continue;
+                if (npre.includes(nd) && nd.length > dirLen) {
+                    dirCand = m; dirLen = nd.length;
+                }
+            }
+            let title = titleCand ? titleCand.title : null;
+            let director = dirCand ? dirCand.director : (titleCand ? titleCand.director : null);
+            if (!title) {
+                if (dirCand) {
+                    const ndLower = (dirCand.director || '').toLowerCase();
+                    const idx = pre.toLowerCase().indexOf(ndLower);
+                    title = idx >= 0 ? pre.slice(0, idx).trim() : pre;
+                } else {
+                    title = pre;
+                }
+            }
+            if (!director) director = 'N/A';
+            return { title, director };
+        }
+
+        function renderMovies() {
+            const container = document.getElementById('moviesContainer');
+            container.className = currentView === 'list' ? 'list-view' : 'movies-grid';
+            container.innerHTML = '';
+
+            if (filteredMovies.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <div class="no-results-icon">😔</div>
+                        <p>No movies match your current filters. Try resetting or broadening your search.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filteredMovies.map(movie => {
+                const titleParts = (movie.title || '').split(' / ').map(s => s.trim()).filter(Boolean);
+                const directorParts = (movie.director || '').split(' / ').map(s => s.trim()).filter(Boolean);
+                const countryPartsRaw = (movie.country || '').split(' / ').map(s => s.trim()).filter(Boolean);
+                const parsedCountryParts = countryPartsRaw.map(p => parseCountryDurationPart(p));
+                const hasTwoDurations = parsedCountryParts.length > 1 && parsedCountryParts.every(p => p.duration != null);
+                const hasMultiDirectors = directorParts.length > 1;
+                const hasMultiTitles = titleParts.length > 1;
+                // Check explicit override
+                const override = MULTI_SESSION_OVERRIDES.find(o =>
+                    simpleNormalize(o.match.title) === simpleNormalize(movie.title) &&
+                    (!o.match.cinema || o.match.cinema === movie.cinema) &&
+                    (!o.match.date || o.match.date === movie.date)
+                );
+                // Multi if country encodes two durations, or titles split with supporting info, or override exists
+                const isMulti = !!override || hasTwoDurations || (hasMultiTitles && (hasMultiDirectors || hasTwoDurations));
+
+                if (!isMulti) {
+                    return `
+                    <div class="movie-card">
+                        <div class="movie-title">${movie.title}</div>
+                        ${movie.arabicTitle ? `<div class="movie-subtitle rtl">${movie.arabicTitle}</div>` : ''}
+                        <span class="cinema-badge">${movie.cinema} - ${movie.date}</span>
+                        <div class="movie-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Director:</span>
+                                <span>${movie.director || 'N/A'}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Category:</span>
+                                <span>${movie.category}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Time:</span>
+                                <span>${movie.time || 'N/A'}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Country:</span>
+                                <span>${movie.country}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Duration:</span>
+                                <span>${movie.duration} min</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Language:</span>
+                                <span>${movie.language}</span>
+                            </div>
+                        </div>
+                    </div>`;
+                }
+
+                // Build sub-projections using parts found across fields
+                let items = [];
+                if (override) {
+                    const countryDisplay = normalizeCountryPart(movie.country);
+                    const langDisplay = movie.language || 'N/A';
+                    items = override.projections.map(p => `
+                        <div class="projection-item">
+                            <div class="projection-title">${p.title}</div>
+                            <div class="projection-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">Director:</span>
+                                    <span>${movie.director || 'N/A'}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Country:</span>
+                                    <span>${countryDisplay}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Duration:</span>
+                                    <span>${p.duration != null ? `${p.duration} min` : 'N/A'}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Language:</span>
+                                    <span>${langDisplay}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                } else if (hasTwoDurations && !hasMultiTitles && countryPartsRaw.length >= 2) {
+                    const cp0 = parseCountryDurationPart(countryPartsRaw[0]);
+                    const cp1 = parseCountryDurationPart(countryPartsRaw[1]);
+                    const info2 = extractTitleDirectorFromCountryPart(countryPartsRaw[1], movie);
+                    const dur0 = cp0.duration != null ? `${cp0.duration} min` : (movie.duration ? `${movie.duration} min` : 'N/A');
+                    const dur1 = cp1.duration != null ? `${cp1.duration} min` : 'N/A';
+                    const lang0 = cp0.language || (movie.language || '');
+                    const lang1 = cp1.language || '';
+                    items = [
+                        `
+                        <div class="projection-item">
+                            <div class="projection-title">${movie.title}</div>
+                            <div class="projection-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">Director:</span>
+                                    <span>${movie.director || 'N/A'}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Country:</span>
+                                    <span>${cp0.country}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Duration:</span>
+                                    <span>${dur0}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Language:</span>
+                                    <span>${lang0 || 'N/A'}</span>
+                                </div>
+                            </div>
+                        </div>
+                        `,
+                        `
+                        <div class="projection-item">
+                            <div class="projection-title">${info2.title || 'Untitled'}</div>
+                            <div class="projection-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">Director:</span>
+                                    <span>${info2.director || 'N/A'}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Country:</span>
+                                    <span>${cp1.country}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Duration:</span>
+                                    <span>${dur1}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Language:</span>
+                                    <span>${lang1 || 'N/A'}</span>
+                                </div>
+                            </div>
+                        </div>
+                        `
+                    ];
+                } else {
+                    const maxLen = Math.max(titleParts.length, directorParts.length, countryPartsRaw.length);
+                    for (let i = 0; i < maxLen; i++) {
+                        const t = titleParts[i] || titleParts[titleParts.length - 1] || 'Untitled';
+                        const d = directorParts[i] || directorParts[directorParts.length - 1] || 'N/A';
+                        const cp = parseCountryDurationPart(countryPartsRaw[i] || countryPartsRaw[countryPartsRaw.length - 1] || '');
+                        const dur = cp.duration != null ? `${cp.duration} min` : (movie.duration ? `${movie.duration} min` : 'N/A');
+                        const lang = cp.language || (movie.language || '');
+                        items.push(`
+                            <div class="projection-item">
+                                <div class="projection-title">${t}</div>
+                                <div class="projection-meta">
+                                    <div class="meta-item">
+                                        <span class="meta-label">Director:</span>
+                                        <span>${d}</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Country:</span>
+                                        <span>${cp.country}</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Duration:</span>
+                                        <span>${dur}</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Language:</span>
+                                        <span>${lang || 'N/A'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+                    }
+                }
+
+                return `
+                <div class="movie-card">
+                    <div class="movie-title">${movie.title}</div>
+                    ${movie.arabicTitle ? `<div class="movie-subtitle rtl">${movie.arabicTitle}</div>` : ''}
+                    <span class="cinema-badge">${movie.cinema} - ${movie.date}</span>
+                    <div class="movie-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Category:</span>
+                            <span>${movie.category}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Time:</span>
+                            <span>${movie.time || 'N/A'}</span>
+                        </div>
+                    </div>
+                    <div class="sub-projections">
+                        ${items.join('')}
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('cinemaFilter').value = '';
+            document.getElementById('categoryFilter').value = '';
+            const tf = document.getElementById('timeFrom'); if (tf) tf.value = '';
+            showTodaysMoviesFilter = false;
+            document.getElementById('todayBtn').classList.remove('active');
+            showCOOnlyFilter = false;
+            const coBtnEl = document.getElementById('coBtn');
+            if (coBtnEl) coBtnEl.classList.remove('active');
+            filteredMovies = [...allMoviesData];
+            updateStats();
+            renderMovies();
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+        document.getElementById('cinemaFilter').addEventListener('change', applyFilters);
+        document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+        const tfEl = document.getElementById('timeFrom'); if (tfEl) tfEl.addEventListener('change', applyFilters);
+
+        function openCountryModal() {
+            buildCountryOptions();
+            const modal = document.getElementById('countryModal');
+            modal.style.display = 'flex';
+        }
+
+        function closeCountryModal() {
+            const modal = document.getElementById('countryModal');
+            modal.style.display = 'none';
+        }
+
+        function getFilteredWithoutCountry() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const cinema = document.getElementById('cinemaFilter').value;
+            const category = document.getElementById('categoryFilter').value;
+
+            return allMoviesData.filter(movie => {
+                const arabic = (movie.arabicTitle || '').toLowerCase();
+                const textMatch = movie.title.toLowerCase().includes(searchTerm) ||
+                                  arabic.includes(searchTerm) ||
+                                  movie.director.toLowerCase().includes(searchTerm) ||
+                                  movie.country.toLowerCase().includes(searchTerm);
+
+                const cinemaMatch = !cinema || movie.cinema === cinema;
+                const categoryMatch = !category || movie.category === category;
+                const todayMatch = !showTodaysMoviesFilter || movie.date === todayDate;
+
+                return textMatch && cinemaMatch && categoryMatch && todayMatch;
+            });
+        }
+
+        function buildCountryOptions() {
+            const container = document.getElementById('countryOptions');
+            const base = getFilteredWithoutCountry();
+            const map = new Map();
+            base.forEach(movie => {
+                movie.country
+                    .split(/\s*\/\s*|\s*,\s*/)
+                    .map(c => normalizeCountryPart(c))
+                    .forEach(part => {
+                        const key = normalizeKeyCountry(part);
+                        if (part && key !== 'multiple' && !map.has(key)) {
+                            map.set(key, part);
+                        }
+                    });
+            });
+            let countries = Array.from(map.values());
+            countries.sort((a, b) => {
+                const ak = normalizeKeyCountry(a);
+                const bk = normalizeKeyCountry(b);
+                if (ak === 'tunisie' && bk !== 'tunisie') return -1;
+                if (bk === 'tunisie' && ak !== 'tunisie') return 1;
+                return a.localeCompare(b);
+            });
+            const selectedKeys = selectedCountriesFilter.map(x => normalizeKeyCountry(x));
+            container.innerHTML = countries.map(c => {
+                const checked = selectedKeys.includes(normalizeKeyCountry(c)) ? 'checked' : '';
+                const isTunisia = normalizeKeyCountry(c) === 'tunisie';
+                const cls = isTunisia ? 'country-option main' : 'country-option';
+                return `<label class="${cls}">
+                            <input type="checkbox" value="${c}" ${checked}>
+                            <span>${c}</span>
+                        </label>`;
+            }).join('');
+        }
+
+        function applyCountrySelection() {
+            const checkedInputs = Array.from(document.querySelectorAll('#countryOptions input[type="checkbox"]:checked'));
+            selectedCountriesFilter = checkedInputs.map(i => i.value);
+            closeCountryModal();
+            applyFilters();
+        }
+
+        function clearCountrySelection() {
+            selectedCountriesFilter = [];
+            buildCountryOptions();
+        }
+
+        // Initialize app immediately with embedded data so UI isn't empty
+        initializeApp();
+        // Then fetch and refresh with JSON data when available
+        loadData();
+    </script>
+</body>
+</html>
+        
