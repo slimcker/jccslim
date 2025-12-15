@@ -1,0 +1,2662 @@
+[
+  {
+    "venue": "L'OPERA",
+    "date": "DIMANCHE 14 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "MY FATHER'S SHADOW",
+        "title_original": "",
+        "director": "AKINOLA DAVIES JR",
+        "country_duration": "NIGÉRIA 93'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "KATANGA LA DANSE DES SCORPIONS",
+        "title_original": "",
+        "director": "DANI KOUYATÉ",
+        "country_duration": "BURKINA FASO 114'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "21:30",
+        "title_translated": "ONCE UPON A TIME IN GAZA",
+        "title_original": "كان يا مكان في غزة",
+        "director": "ARAB ET TARZAN NASSER",
+        "country_duration": "PALESTINE 90'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "L'OPERA",
+    "date": "LUNDI 15 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "SINK",
+        "title_original": "غرق",
+        "director": "ZAIN DURAIE",
+        "country_duration": "JORDANIE 88'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "MY FATHER'S SCENT",
+        "title_original": "كولونيا",
+        "director": "MOHAMED SIAM",
+        "country_duration": "EGYPTE 96'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "21:30",
+        "title_translated": "THE VOICE OF HIND RAJAB",
+        "title_original": "صوت هند رجب",
+        "director": "KAOUTHER BEN HANIA",
+        "country_duration": "TUNISIE 90'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "L'OPERA",
+    "date": "MARDI 16 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "HIJRA",
+        "title_original": "هجرة",
+        "director": "SHAHAD AMEEN",
+        "country_duration": "ARABIE SAOUDITE 114'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "IRKALLA: GILGAMESH'S DREAM",
+        "title_original": "أركاللا : حلم كلكامش",
+        "director": "MOHAMED JABARAH AL-DARADJI",
+        "country_duration": "IRAK 109'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "21:30",
+        "title_translated": "PROMISED SKY",
+        "title_original": "سماء بلا أرض",
+        "director": "ERIGE SEHIRI",
+        "country_duration": "TUNISIE 92'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "L'OPERA",
+    "date": "MERCREDI 17 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "DIYA",
+        "title_original": "",
+        "director": "ACHILLE RONAIMOU",
+        "country_duration": "TCHAD 96'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "THE STORIES",
+        "title_original": "القصص",
+        "director": "ABU BAKR SHAWKY",
+        "country_duration": "EGYPTE 111'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "21:30",
+        "title_translated": "WHERE THE WIND COMES FROM",
+        "title_original": "وين ياخذنا الريح",
+        "director": "AMEL GUELLATY",
+        "country_duration": "TUNISIE 99'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "L'OPERA",
+    "date": "JEUDI 18 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "L'ODYSSÉE DE L'OUBLI",
+        "title_original": "صياد القولة",
+        "director": "MOKHTAR LADJIMI",
+        "country_duration": "TUNISIE 105'",
+        "genre": "SÉANCE SPÉCIALE"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "COTTON QUEEN",
+        "title_original": "ملكة القطن",
+        "director": "SUZANNAH MIRGHANI",
+        "country_duration": "SOUDAN 93'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "21:30",
+        "title_translated": "ROQIA",
+        "title_original": "رقية",
+        "director": "YANIS KOUSSIM",
+        "country_duration": "ALGÉRIE 94'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "THÉÂTRE DES RÉGIONS",
+    "date": "DIMANCHE 14 DEC",
+    "films": [
+      {
+        "time": "14:00",
+        "title_translated": "BOOMERANG ATOMIC / CIMETIÈRE DE VIE",
+        "title_original": "",
+        "director": "RACHID BOUCHAREB / MAMADOU MOUSTAPHA GUEYE",
+        "country_duration": "ALGÉRIE 21' - VOSTEN / SÉNÉGAL 60' - VOSTEN",
+        "genre": "CARTE BLANCHE / CO LM DOC"
+      },
+      {
+        "time": "16:30",
+        "title_translated": "FIVE EYES",
+        "title_original": "بعيون مغربية",
+        "director": "KARIM DEBBAGH",
+        "country_duration": "MAROC 75'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "19:30",
+        "title_translated": "LITI LITI / THE ATTACHEMENT",
+        "title_original": "",
+        "director": "MAMADOU KHOUMA GUEYE",
+        "country_duration": "SÉNÉGAL 76' - VOSTEN",
+        "genre": "CO LM DOC"
+      }
+    ]
+  },
+  {
+    "venue": "THÉÂTRE DES RÉGIONS",
+    "date": "LUNDI 15 DEC",
+    "films": [
+      {
+        "time": "14:00",
+        "title_translated": "THE OTHER... RAEBURN",
+        "title_original": "",
+        "director": "DAVID-PIERRE FILA",
+        "country_duration": "RÉPUBLIQUE DU CONGO 113' - VOSTFR",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "16:30",
+        "title_translated": "CINEMA KAWAKEB",
+        "title_original": "سينما كواكب",
+        "director": "MAHMOUD AL MASSAD",
+        "country_duration": "JORDANIE 78'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "19:30",
+        "title_translated": "LE PARA-DIS",
+        "title_original": "الجنة",
+        "director": "MAJDI LAKHDAR",
+        "country_duration": "TUNISIE 82'",
+        "genre": "CO LM DOC"
+      }
+    ]
+  },
+  {
+    "venue": "THÉÂTRE DES RÉGIONS",
+    "date": "MARDI 16 DEC",
+    "films": [
+      {
+        "time": "14:00",
+        "title_translated": "L'HOMME QUI PLANTE LES BAOBABS",
+        "title_original": "",
+        "director": "K.MICHEL ZONGO",
+        "country_duration": "BURKINA FASO 74'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "16:30",
+        "title_translated": "PROGRAMME 1 COMPÉTITION OFFICIELLE COURTS MÉTRAGES",
+        "title_original": "",
+        "director": "",
+        "country_duration": "111'",
+        "genre": "CO COURTS MÉTRAGES"
+      },
+      {
+        "time": "19:30",
+        "title_translated": "NOTRE SEMENCE",
+        "title_original": "زريعتنا",
+        "director": "ANIS LASSOUED",
+        "country_duration": "TUNISIE 80'",
+        "genre": "CO LM DOC"
+      }
+    ]
+  },
+  {
+    "venue": "THÉÂTRE DES RÉGIONS",
+    "date": "MERCREDI 17 DEC",
+    "films": [
+      {
+        "time": "14:00",
+        "title_translated": "HOME MOVIE ON LOCATION",
+        "title_original": "مواقع فيلم عائلي",
+        "director": "VIOLA SHAFIK",
+        "country_duration": "EGYPTE 100' - VOSTFR",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "16:30",
+        "title_translated": "PROGRAMME 2 COMPÉTITION OFFICIELLE COURTS MÉTRAGES",
+        "title_original": "",
+        "director": "",
+        "country_duration": "110'",
+        "genre": "CO COURTS MÉTRAGES"
+      },
+      {
+        "time": "19:30",
+        "title_translated": "ON THE HILL",
+        "title_original": "فوق التل",
+        "director": "BELHASSEN HANDOUS",
+        "country_duration": "TUNISIE 77'",
+        "genre": "CO LM DOC"
+      }
+    ]
+  },
+  {
+    "venue": "THÉÂTRE DES RÉGIONS",
+    "date": "JEUDI 18 DEC",
+    "films": [
+      {
+        "time": "14:00",
+        "title_translated": "THE LIONS BY THE RIVER TIGRIS",
+        "title_original": "الأسود على نهر دجلة",
+        "director": "ZARADASHT AHMED",
+        "country_duration": "IRAK 91'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "16:30",
+        "title_translated": "PROGRAMME 3 COMPÉTITION OFFICIELLE COURTS MÉTRAGES",
+        "title_original": "",
+        "director": "",
+        "country_duration": "103'",
+        "genre": "CO COURTS MÉTRAGES"
+      },
+      {
+        "time": "19:30",
+        "title_translated": "TALES OF THE WOUNDED LAND",
+        "title_original": "",
+        "director": "ABBAS FAHDEL",
+        "country_duration": "IRAK 120'",
+        "genre": "CO LM DOC"
+      }
+    ]
+  },
+  {
+    "venue": "THÉÂTRE DES RÉGIONS",
+    "date": "VENDREDI 19 DEC",
+    "films": [
+      {
+        "time": "14:00",
+        "title_translated": "BARRY LYNDON",
+        "title_original": "",
+        "director": "STANLEY KUBRICK",
+        "country_duration": "USA 185' - VOSTEN Remasterisé 4K",
+        "genre": "CINÉMA DU MONDE"
+      },
+      {
+        "time": "19:30",
+        "title_translated": "ROUND 13",
+        "title_original": "الجولة 13",
+        "director": "MOHAMED ALI NAHDI",
+        "country_duration": "TUNISIE 90'",
+        "genre": "SÉANCE SPÉCIALE"
+      }
+    ]
+  },
+  {
+    "venue": "4ÈME ART",
+    "date": "DIMANCHE 14 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "GAZA - FROM GROUND ZERO PROGRAMME 1",
+        "title_original": "غزة - من نقطة الصفر",
+        "director": "",
+        "country_duration": "81'",
+        "genre": "LA PALESTINE AU CŒUR DES JCC"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "LATE SHIFT",
+        "title_original": "",
+        "director": "PETRA VOLPE",
+        "country_duration": "SUISSE 92'",
+        "genre": "CINÉMA DU MONDE"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "LE SANG DU CONDOR",
+        "title_original": "",
+        "director": "JORGE SANJINÉS",
+        "country_duration": "BOLIVIE 69'",
+        "genre": "CINÉMA AMÉRIQUE LATINE"
+      }
+    ]
+  },
+  {
+    "venue": "4ÈME ART",
+    "date": "LUNDI 15 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "CINÉ PROMESSE PROGRAMME 1",
+        "title_original": "",
+        "director": "",
+        "country_duration": "79'",
+        "genre": "CINÉ-PROMESSE"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "RETURN TO HAIFA",
+        "title_original": "عائد إلى حيفا",
+        "director": "KASSEM HAWAL",
+        "country_duration": "IRAK - PALESTINE 76'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "SORDA",
+        "title_original": "",
+        "director": "EVA LIBERTAD",
+        "country_duration": "ESPAGNE 109'",
+        "genre": "CINÉMA ESPAGNOL"
+      }
+    ]
+  },
+  {
+    "venue": "4ÈME ART",
+    "date": "MARDI 16 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "EL 47",
+        "title_original": "",
+        "director": "MARCEL BARRENA",
+        "country_duration": "ESPAGNE 110'",
+        "genre": "CINÉMA ESPAGNOL"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "GAZA - FROM GROUND ZERO PROGRAMME 2",
+        "title_original": "",
+        "director": "",
+        "country_duration": "85'",
+        "genre": "LA PALESTINE AU CŒUR DES JCC"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "CERF-VOLANT",
+        "title_original": "طيارة من ورق",
+        "director": "RANDA CHAHAL SABBAGH",
+        "country_duration": "LIBAN 80'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      }
+    ]
+  },
+  {
+    "venue": "4ÈME ART",
+    "date": "MERCREDI 17 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "CINÉ PROMESSE PROGRAMME 2",
+        "title_original": "",
+        "director": "",
+        "country_duration": "60'",
+        "genre": "CINÉ-PROMESSE"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "LA NOCE",
+        "title_original": "العرس",
+        "director": "COLLECTIF LE NOUVEAU THÉÂTRE DE TUNIS",
+        "country_duration": "TUNISIE 90'",
+        "genre": "JCC CLASSIQUE FILMS RESTAURÉS"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "THE LAST VIKING",
+        "title_original": "",
+        "director": "ANDERS THOMAS JENSEN",
+        "country_duration": "DANEMARK 116'",
+        "genre": "CINÉMA DU MONDE"
+      }
+    ]
+  },
+  {
+    "venue": "4ÈME ART",
+    "date": "JEUDI 18 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "CINÉ PROMESSE PROGRAMME 3",
+        "title_original": "",
+        "director": "",
+        "country_duration": "70'",
+        "genre": "CINÉ-PROMESSE"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "PROGRAMME 2 COMPÉTITION OFFICIELLE COURTS MÉTRAGES",
+        "title_original": "",
+        "director": "",
+        "country_duration": "110'",
+        "genre": "CO COURTS MÉTRAGES"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "PALESTINE 36",
+        "title_original": "فلسطين ٣٦",
+        "director": "ANNEMARIE JACIR",
+        "country_duration": "PALESTINE 119'",
+        "genre": "FILM D'OUVERTURE"
+      }
+    ]
+  },
+  {
+    "venue": "4ÈME ART",
+    "date": "VENDREDI 19 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "NAHLA",
+        "title_original": "نهلة",
+        "director": "FAROUK BELLOUFA",
+        "country_duration": "ALGÉRIE 111'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "L'AGENT SECRET",
+        "title_original": "",
+        "director": "KLEBER MENDONÇA FILHO",
+        "country_duration": "BRÉSIL 160'",
+        "genre": "CINÉMA DU MONDE"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "ROMERIA",
+        "title_original": "",
+        "director": "CARLA SIMÓN",
+        "country_duration": "ESPAGNE 115'",
+        "genre": "CINÉMA ESPAGNOL"
+      }
+    ]
+  },
+  {
+    "venue": "4ÈME ART",
+    "date": "SAMEDI 20 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "LA CASA",
+        "title_original": "",
+        "director": "ALEX MONTOYA",
+        "country_duration": "ESPAGNE 80'",
+        "genre": "CINÉMA ESPAGNOL"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "MON PAYS IMAGINAIRE",
+        "title_original": "",
+        "director": "PATRICIO GUZMÁN",
+        "country_duration": "FRANCE - CHILI 83'",
+        "genre": "CINÉMA AMÉRIQUE LATINE"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "KOMEDIE ELAHI DIVINE COMEDY",
+        "title_original": "",
+        "director": "ALI ASGARI",
+        "country_duration": "IRAN 98'",
+        "genre": "CINÉMA DU MONDE"
+      }
+    ]
+  },
+  {
+    "venue": "CINÉ 350",
+    "date": "DIMANCHE 14 DEC",
+    "films": [
+      {
+        "time": "13:00",
+        "title_translated": "CINÉ-PROMESSE PROGRAMME 1",
+        "title_original": "",
+        "director": "",
+        "country_duration": "79'",
+        "genre": "CINÉ-PROMESSE"
+      },
+      {
+        "time": "15:30",
+        "title_translated": "INSIANG",
+        "title_original": "",
+        "director": "LINO BROCKA",
+        "country_duration": "PHILLIPINES 95'",
+        "genre": "CINÉMA PHILIPPIN"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "BONJOUR C'EST MOI",
+        "title_original": "",
+        "director": "FRUNZE DOVLA TYAN",
+        "country_duration": "ARMÉNIE 137'",
+        "genre": "CINÉMA ARMÉNIEN"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "LA CASA",
+        "title_original": "",
+        "director": "ALEX MONTOYA",
+        "country_duration": "ESPAGNE 80'",
+        "genre": "CINÉMA ESPAGNOL"
+      }
+    ]
+  },
+  {
+    "venue": "CINÉ 350",
+    "date": "LUNDI 15 DEC",
+    "films": [
+      {
+        "time": "13:00",
+        "title_translated": "CINÉ-PROMESSE PROGRAMME 2",
+        "title_original": "",
+        "director": "",
+        "country_duration": "60'",
+        "genre": "CINÉ-PROMESSE"
+      },
+      {
+        "time": "15:30",
+        "title_translated": "GAZA GRAD",
+        "title_original": "غزة كراد",
+        "director": "SAWSAN QAOUD",
+        "country_duration": "PALESTINE 77'",
+        "genre": "HORS COMPÉTITION"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "LE FESTIN",
+        "title_original": "",
+        "director": "MOHAMED DAMMAK",
+        "country_duration": "TUNISIE 15' / LES PALMIERS BLESSÉS ABDELLATIF BEN AMMAR TUNISIE 106' - VO",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "THE LAST VIKING",
+        "title_original": "",
+        "director": "ANDERS THOMAS JENSEN",
+        "country_duration": "DANEMARK 116'",
+        "genre": "CINÉMA DU MONDE"
+      }
+    ]
+  },
+  {
+    "venue": "CINÉ 350",
+    "date": "MARDI 16 DEC",
+    "films": [
+      {
+        "time": "13:00",
+        "title_translated": "GAZA - FROM GROUND ZERO PROGRAMME 1",
+        "title_original": "",
+        "director": "",
+        "country_duration": "81'",
+        "genre": "LA PALESTINE AU CŒUR DES JCC"
+      },
+      {
+        "time": "15:30",
+        "title_translated": "ONE MORE SHOW",
+        "title_original": "ضليل عنا عرض",
+        "director": "MAI SAAD & AHMAD AL DANAF",
+        "country_duration": "EGYPTE 72'",
+        "genre": "HORS COMPÉTITION"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "TÊTES BRÛLÉES",
+        "title_original": "",
+        "director": "MAJA-AJMIA YDE ZELLAMA",
+        "country_duration": "TUNISIE 84'",
+        "genre": "SÉANCE SPÉCIALE"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "L'AGENT SECRET",
+        "title_original": "",
+        "director": "KLEBER MENDONÇA FILHO",
+        "country_duration": "BRÉSIL 160'",
+        "genre": "CINÉMA DU MONDE"
+      }
+    ]
+  },
+  {
+    "venue": "CINÉ 350",
+    "date": "MERCREDI 17 DEC",
+    "films": [
+      {
+        "time": "13:00",
+        "title_translated": "CINÉ-PROMESSE PROGRAMME 3",
+        "title_original": "",
+        "director": "",
+        "country_duration": "70'",
+        "genre": "CINÉ-PROMESSE"
+      },
+      {
+        "time": "15:30",
+        "title_translated": "WORK IN PROGRESS / TRAVERSÉES",
+        "title_original": "",
+        "director": "FATEN JAZIRI / MAHMOUD BEN MAHMOUD",
+        "country_duration": "TUNISIE 12' / TUNISIE 97'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "MY ARMENIAN PHANTOMS",
+        "title_original": "",
+        "director": "TAMARA STEPANYAN",
+        "country_duration": "ARMÉNIE 75'",
+        "genre": "CINÉMA ARMÉNIEN"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "MORLAIX",
+        "title_original": "",
+        "director": "JAIME ROSALES",
+        "country_duration": "ESPAGNE 124'",
+        "genre": "CINÉMA ESPAGNOL"
+      }
+    ]
+  },
+  {
+    "venue": "CINÉ 350",
+    "date": "JEUDI 18 DEC",
+    "films": [
+      {
+        "time": "13:00",
+        "title_translated": "GAZA - FROM GROUND ZERO PROGRAMME 2",
+        "title_original": "",
+        "director": "",
+        "country_duration": "85'",
+        "genre": "LA PALESTINE AU CŒUR DES JCC"
+      },
+      {
+        "time": "15:30",
+        "title_translated": "I WILL REMEMBER YOU",
+        "title_original": "لن أنساك",
+        "director": "MOHAMED RIDA GUEZNAI",
+        "country_duration": "MAROC 93'",
+        "genre": "HORS COMPÉTITION"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "REDISCOVERING FANON",
+        "title_original": "",
+        "director": "RICO SPEIGHT",
+        "country_duration": "USA 83'",
+        "genre": "SÉANCE SPÉCIALE"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "FATHER MOTHER SISTER BROTHER",
+        "title_original": "",
+        "director": "JIM JARMUSCH",
+        "country_duration": "USA 111'",
+        "genre": "CINÉMA DU MONDE"
+      }
+    ]
+  },
+  {
+    "venue": "CINÉ 350",
+    "date": "VENDREDI 19 DEC",
+    "films": [
+      {
+        "time": "13:00",
+        "title_translated": "JAD GHOSN",
+        "title_original": "زياد الرحباني: من بعد العاصم",
+        "director": "",
+        "country_duration": "LIBAN 111' VO",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "15:30",
+        "title_translated": "GREEN PROGRAMME COURTS-MÉTRAGES D'ENVIRONNEMENT",
+        "title_original": "",
+        "director": "",
+        "country_duration": "101'",
+        "genre": "GREEN"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "THE SETTLEMENT",
+        "title_original": "المستعمرة",
+        "director": "MOHAMED RASHAD",
+        "country_duration": "EGYPTE 93'",
+        "genre": "SÉANCE SPÉCIALE"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "SIRAT",
+        "title_original": "",
+        "director": "OLIVER LAXE",
+        "country_duration": "ESPAGNE 115'",
+        "genre": "CINÉMA DU MONDE"
+      }
+    ]
+  },
+  {
+    "venue": "TAHER CHERIAA",
+    "date": "DIMANCHE 14 DEC",
+    "films": [
+      {
+        "time": "14:30",
+        "title_translated": "SIESTES GRENADINE",
+        "title_original": "قوايل الرمان",
+        "director": "MAHMOUD BEN MAHMOUD",
+        "country_duration": "TUNISIE 90'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "17:30",
+        "title_translated": "HOMMAGE D'UNE FILLE À SON PÈRE",
+        "title_original": "",
+        "director": "FATOU CISSÉ",
+        "country_duration": "MALI 73'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "PROGRAMME HOMMAGE CLAUDIA CARDINALE",
+        "title_original": "",
+        "director": "",
+        "country_duration": "91'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      }
+    ]
+  },
+  {
+    "venue": "TAHER CHERIAA",
+    "date": "LUNDI 15 DEC",
+    "films": [
+      {
+        "time": "14:30",
+        "title_translated": "PROGRAMME HOMMAGE PAULIN SOUMANOU VIEYRA",
+        "title_original": "",
+        "director": "",
+        "country_duration": "113'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "17:30",
+        "title_translated": "LA NOCE",
+        "title_original": "العرس",
+        "director": "COLLECTIF LE NOUVEAU THÉÂTRE DE TUNIS",
+        "country_duration": "TUNISIE 90'",
+        "genre": "JCC CLASSIQUE FILMS RESTAURÉS"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "CARTE BLANCHE TV5 MONDE",
+        "title_original": "",
+        "director": "",
+        "country_duration": "70'",
+        "genre": "CARTE BLANCHE TV5 MONDE"
+      }
+    ]
+  },
+  {
+    "venue": "TAHER CHERIAA",
+    "date": "MARDI 16 DEC",
+    "films": [
+      {
+        "time": "14:30",
+        "title_translated": "WALID CHMAIT, UNE VIE AU COEUR DU CINÉMA",
+        "title_original": "",
+        "director": "SALIM SAAB CHMAIT",
+        "country_duration": "LIBAN 52'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "17:30",
+        "title_translated": "CHRONIQUE DES ANNÉES DE BRAISE",
+        "title_original": "وقائع سنين الجمر",
+        "director": "MOHAMMED LAKHDAR-HAMINA",
+        "country_duration": "ALGÉRIE 177'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      }
+    ]
+  },
+  {
+    "venue": "TAHER CHERIAA",
+    "date": "MERCREDI 17 DEC",
+    "films": [
+      {
+        "time": "14:30",
+        "title_translated": "CARTE BLANCHE AUX COURTS CORSES",
+        "title_original": "",
+        "director": "",
+        "country_duration": "79'",
+        "genre": "CARTE BLANCHE"
+      },
+      {
+        "time": "17:30",
+        "title_translated": "CAMERA ARABE",
+        "title_original": "كاميرا عربية",
+        "director": "FÉRID BOUGHEDIR",
+        "country_duration": "TUNISIE 65'",
+        "genre": "JCC CLASSIQUE FILMS RESTAURÉS"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "FINYÈ",
+        "title_original": "",
+        "director": "SOULEYMANE CISSÉ",
+        "country_duration": "MALI 101'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      }
+    ]
+  },
+  {
+    "venue": "TAHER CHERIAA",
+    "date": "JEUDI 18 DEC",
+    "films": [
+      {
+        "time": "14:30",
+        "title_translated": "WAJD, LES MILLE ET UNE VOIX SOUFIES",
+        "title_original": "وجد",
+        "director": "MAHMOUD BEN MAHMOUD",
+        "country_duration": "TUNISIE 93'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "17:30",
+        "title_translated": "L'HOMME DE CENDRES",
+        "title_original": "ريح السد",
+        "director": "NOURI BOUZID",
+        "country_duration": "TUNISIE 110'",
+        "genre": "JCC CLASSIQUE FILMS RESTAURÉS"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "YELEEN",
+        "title_original": "",
+        "director": "SOULEYMANE CISSÉ",
+        "country_duration": "MALI 102'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      }
+    ]
+  },
+  {
+    "venue": "TAHER CHERIAA",
+    "date": "VENDREDI 19 DEC",
+    "films": [
+      {
+        "time": "14:30",
+        "title_translated": "THE CLOWN OF GAZA",
+        "title_original": "",
+        "director": "ABDULRAHMAN SABBAH",
+        "country_duration": "PALESTINE 60'",
+        "genre": "LA PALESTINE AU CŒUR DES JCC"
+      },
+      {
+        "time": "17:30",
+        "title_translated": "DEN MUSO",
+        "title_original": "",
+        "director": "SOULEYMANE CISSÉ",
+        "country_duration": "MALI 89'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "STAR WARS : LA MENACE FANTÔME",
+        "title_original": "",
+        "director": "GEORGE WALTON LUCAS JR.",
+        "country_duration": "USA 136' - VF",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      }
+    ]
+  },
+  {
+    "venue": "ABC",
+    "date": "DIMANCHE 14 DEC",
+    "films": [
+      {
+        "time": "14:30",
+        "title_translated": "UTAMA",
+        "title_original": "",
+        "director": "ALEJANDRO LOAYZA GRISI",
+        "country_duration": "BOLIVIE 87'",
+        "genre": "CINÉMA AMÉRIQUE LATINE"
+      },
+      {
+        "time": "17:30",
+        "title_translated": "LES BRUITS DE RECIFE",
+        "title_original": "",
+        "director": "KLEBER MENDONÇA FILHO",
+        "country_duration": "BRÉSIL 131'",
+        "genre": "CINÉMA AMÉRIQUE LATINE"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "KOMEDIE ELAHI DIVINE COMEDY",
+        "title_original": "",
+        "director": "ALI ASGARI",
+        "country_duration": "IRAN 98'",
+        "genre": "CINÉMA DU MONDE"
+      }
+    ]
+  },
+  {
+    "venue": "ABC",
+    "date": "LUNDI 15 DEC",
+    "films": [
+      {
+        "time": "14:30",
+        "title_translated": "ONCE UPON A TIME IN GAZA",
+        "title_original": "كان يا مكان في غزة",
+        "director": "ARAB ET TARZAN NASSER",
+        "country_duration": "PALESTINE 90'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "17:30",
+        "title_translated": "KATANGA LA DANSE DES SCORPIONS",
+        "title_original": "",
+        "director": "DANI KOUYATÉ",
+        "country_duration": "BURKINA FASO 114'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "MY FATHER'S SHADOW",
+        "title_original": "",
+        "director": "AKINOLA DAVIES JR",
+        "country_duration": "NIGÉRIA 93'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "ABC",
+    "date": "MARDI 16 DEC",
+    "films": [
+      {
+        "time": "14:30",
+        "title_translated": "THE VOICE OF HIND RAJAB",
+        "title_original": "صوت هند رجب",
+        "director": "KAOUTHER BEN HANIA",
+        "country_duration": "TUNISIE 90'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "17:30",
+        "title_translated": "MY FATHER'S SCENT",
+        "title_original": "كولونيا",
+        "director": "MOHAMED SIAM",
+        "country_duration": "EGYPTE 96'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "SINK",
+        "title_original": "غرق",
+        "director": "ZAIN DURAIE",
+        "country_duration": "JORDANIE 88'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "ABC",
+    "date": "MERCREDI 17 DEC",
+    "films": [
+      {
+        "time": "14:30",
+        "title_translated": "PROMISED SKY",
+        "title_original": "سماء بلا أرض",
+        "director": "ERIGE SEHIRI",
+        "country_duration": "TUNISIE 92'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "17:30",
+        "title_translated": "IRKALLA: GILGAMESH'S DREAM",
+        "title_original": "أركاللا : حلم كلكامش",
+        "director": "MOHAMED JABARAH AL-DARADJI",
+        "country_duration": "IRAK 109'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "HIJRA",
+        "title_original": "هجرة",
+        "director": "SHAHAD AMEEN",
+        "country_duration": "ARABIE SAOUDITE 114'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "ABC",
+    "date": "JEUDI 18 DEC",
+    "films": [
+      {
+        "time": "14:30",
+        "title_translated": "WHERE THE WIND COMES FROM",
+        "title_original": "وين ياخذنا الريح",
+        "director": "AMEL GUELLATY",
+        "country_duration": "TUNISIE 99'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "17:30",
+        "title_translated": "THE STORIES",
+        "title_original": "القصص",
+        "director": "ABU BAKR SHAWKY",
+        "country_duration": "EGYPTE 111'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "DIYA",
+        "title_original": "",
+        "director": "ACHILLE RONAIMOU",
+        "country_duration": "TCHAD 96'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "ABC",
+    "date": "VENDREDI 19 DEC",
+    "films": [
+      {
+        "time": "14:30",
+        "title_translated": "WOMEN AND CHILD",
+        "title_original": "",
+        "director": "SAEED ROUSTAEE",
+        "country_duration": "IRAN 131'",
+        "genre": "CINÉMA DU MONDE"
+      },
+      {
+        "time": "17:30",
+        "title_translated": "ROQIA",
+        "title_original": "رقية",
+        "director": "YANIS KOUSSIM",
+        "country_duration": "ALGÉRIE 94'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "COTTON QUEEN",
+        "title_original": "ملكة القطن",
+        "director": "SUZANNAH MIRGHANI",
+        "country_duration": "SOUDAN 93'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "ABC",
+    "date": "SAMEDI 20 DEC",
+    "films": [
+      {
+        "time": "14:30",
+        "title_translated": "SIRAT",
+        "title_original": "",
+        "director": "OLIVER LAXE",
+        "country_duration": "ESPAGNE, FRANCE 115'",
+        "genre": "CINÉMA DU MONDE"
+      },
+      {
+        "time": "17:30",
+        "title_translated": "LATE SHIFT",
+        "title_original": "",
+        "director": "PETRA VOLPE",
+        "country_duration": "SUISSE, ALLEMAGNE 92'",
+        "genre": "CINÉMA DU MONDE"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "THE FALLING SKY",
+        "title_original": "LA CHUTE DU CIEL",
+        "director": "ERYK ROCHA",
+        "country_duration": "BRÉSIL 109'",
+        "genre": "CINÉMA AMÉRIQUE LATINE"
+      }
+    ]
+  },
+  {
+    "venue": "LE RIO",
+    "date": "DIMANCHE 14 DEC",
+    "films": [
+      {
+        "time": "14:00",
+        "title_translated": "FATHER MOTHER SISTER BROTHER",
+        "title_original": "",
+        "director": "JIM JARMUSCH",
+        "country_duration": "USA 110'",
+        "genre": "CINÉMA DU MONDE"
+      },
+      {
+        "time": "16:30",
+        "title_translated": "LE PROFESSEUR",
+        "title_original": "الأستاذ",
+        "director": "MAHMOUD BEN MAHMOUD",
+        "country_duration": "TUNISIE 92'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "19:30",
+        "title_translated": "THE BURDENED",
+        "title_original": "المرهقون",
+        "director": "AMR GAMAL",
+        "country_duration": "YÉMEN 91'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      }
+    ]
+  },
+  {
+    "venue": "LE RIO",
+    "date": "LUNDI 15 DEC",
+    "films": [
+      {
+        "time": "14:00",
+        "title_translated": "FIVE EYES",
+        "title_original": "بعيون مغربية",
+        "director": "KARIM DEBBAGH",
+        "country_duration": "MAROC 75'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "16:30",
+        "title_translated": "LITI LITI / THE ATTACHEMENT",
+        "title_original": "",
+        "director": "MAMADOU KHOUMA GUEYE",
+        "country_duration": "SÉNÉGAL 76'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "19:30",
+        "title_translated": "CIMETIÈRE DE VIE",
+        "title_original": "مقبرة الحياة",
+        "director": "MAMADOU MOUSTAPHA GUEYE",
+        "country_duration": "SÉNÉGAL 60'",
+        "genre": "CO LM DOC"
+      }
+    ]
+  },
+  {
+    "venue": "LE RIO",
+    "date": "MARDI 16 DEC",
+    "films": [
+      {
+        "time": "14:00",
+        "title_translated": "CINEMA KAWAKEB",
+        "title_original": "سينما كواكب",
+        "director": "MAHMOUD AL MASSAD",
+        "country_duration": "JORDANIE 78'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "16:30",
+        "title_translated": "LE PARA-DIS",
+        "title_original": "الجنة",
+        "director": "MAJDI LAKHDAR",
+        "country_duration": "TUNISIE 82'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "19:30",
+        "title_translated": "THE OTHER... RAEBURN",
+        "title_original": "",
+        "director": "DAVID-PIERRE FILA",
+        "country_duration": "RÉPUBLIQUE DU CONGO 113'",
+        "genre": "CO LM DOC"
+      }
+    ]
+  },
+  {
+    "venue": "LE RIO",
+    "date": "MERCREDI 17 DEC",
+    "films": [
+      {
+        "time": "14:00",
+        "title_translated": "PROGRAMME 1 COMPÉTITION OFFICIELLE COURTS MÉTRAGES",
+        "title_original": "",
+        "director": "",
+        "country_duration": "111'",
+        "genre": "CO COURTS MÉTRAGES"
+      },
+      {
+        "time": "16:30",
+        "title_translated": "NOTRE SEMENCE",
+        "title_original": "زريعتنا",
+        "director": "ANIS LASSOUED",
+        "country_duration": "TUNISIE 80'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "19:30",
+        "title_translated": "L'HOMME QUI PLANTE LES BAOBABS",
+        "title_original": "",
+        "director": "K.MICHEL ZONGO",
+        "country_duration": "BURKINA FASO 74'",
+        "genre": "CO LM DOC"
+      }
+    ]
+  },
+  {
+    "venue": "LE RIO",
+    "date": "JEUDI 18 DEC",
+    "films": [
+      {
+        "time": "14:00",
+        "title_translated": "LE VENT DES AURÈS",
+        "title_original": "ريح الأوراس",
+        "director": "MOHAMMED LAKHDAR-HAMINA",
+        "country_duration": "ALGÉRIE 98'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "16:30",
+        "title_translated": "ON THE HILL",
+        "title_original": "فوق التل",
+        "director": "BELHASSEN HANDOUS",
+        "country_duration": "TUNISIE 77'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "19:30",
+        "title_translated": "HOME MOVIE ON LOCATION",
+        "title_original": "مواقع فيلم عائلي",
+        "director": "VIOLA SHAFIK",
+        "country_duration": "EGYPTE 100'",
+        "genre": "CO LM DOC"
+      }
+    ]
+  },
+  {
+    "venue": "LE RIO",
+    "date": "VENDREDI 19 DEC",
+    "films": [
+      {
+        "time": "14:00",
+        "title_translated": "ANASTASIA DE BIZERTE",
+        "title_original": "",
+        "director": "MAHMOUD BEN MAHMOUD",
+        "country_duration": "TUNISIE 57'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "16:30",
+        "title_translated": "TALES OF THE WOUNDED LAND",
+        "title_original": "",
+        "director": "ABBAS FAHDEL",
+        "country_duration": "IRAK 120'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "19:30",
+        "title_translated": "THE LIONS BY THE RIVER TIGRIS",
+        "title_original": "الأسود على نهر دجلة",
+        "director": "ZARADASHT AHMED",
+        "country_duration": "IRAK 91'",
+        "genre": "CO LM DOC"
+      }
+    ]
+  },
+  {
+    "venue": "LE RIO",
+    "date": "SAMEDI 20 DEC",
+    "films": [
+      {
+        "time": "14:00",
+        "title_translated": "L'HOMME DE CENDRES",
+        "title_original": "ريح السد",
+        "director": "NOURI BOUZID",
+        "country_duration": "TUNISIE 110'",
+        "genre": "JCC CLASSIQUE FILMS RESTAURÉS"
+      },
+      {
+        "time": "16:30",
+        "title_translated": "FATWA",
+        "title_original": "فتوى",
+        "director": "MAHMOUD BEN MAHMOUD",
+        "country_duration": "TUNISIE 102'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "19:30",
+        "title_translated": "CRÉPUSCULE DES OMBRES",
+        "title_original": "غروب الظلال",
+        "director": "MOHAMMED LAKHDAR-HAMINA",
+        "country_duration": "ALGÉRIE 114'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      }
+    ]
+  },
+  {
+    "venue": "IBN RACHIQ",
+    "date": "DIMANCHE 14 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "THE FALLING SKY",
+        "title_original": "LA CHUTE DU CIEL",
+        "director": "ERYK ROCHA",
+        "country_duration": "BRÉSIL 109'",
+        "genre": "CINÉMA AMÉRIQUE LATINE"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "LA NATURE LES SAISONS",
+        "title_original": "",
+        "director": "ARTAVAZD PELECHIAN",
+        "country_duration": "ARMÉNIE 29'",
+        "genre": "CINÉMA ARMÉNIEN"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "EL 47",
+        "title_original": "",
+        "director": "MARCEL BARRENA",
+        "country_duration": "ESPAGNE 110'",
+        "genre": "CINÉMA ESPAGNOL"
+      }
+    ]
+  },
+  {
+    "venue": "IBN RACHIQ",
+    "date": "LUNDI 15 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "LA MEULE",
+        "title_original": "القليب",
+        "director": "FREDJ TRABELSI",
+        "country_duration": "TUNISIE 73'",
+        "genre": "PANORAMA CINÉMA TUNISIEN"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "LE SANG DU CONDOR",
+        "title_original": "YAWAR MALKU",
+        "director": "JORGE SANJINÉS",
+        "country_duration": "BOLIVIE 89' - VO",
+        "genre": "CINÉMA AMÉRIQUE LATINE"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "MON PAYS IMAGINAIRE",
+        "title_original": "",
+        "director": "PATRICIO GUZMÁN",
+        "country_duration": "FRANCE – CHILI 83'",
+        "genre": "CINÉMA AMÉRIQUE LATINE"
+      }
+    ]
+  },
+  {
+    "venue": "IBN RACHIQ",
+    "date": "MARDI 16 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "THE MADMAN",
+        "title_original": "المجنون",
+        "director": "AKRAM ADOUANI",
+        "country_duration": "TUNISIE 90'",
+        "genre": "PANORAMA CINÉMA TUNISIEN"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "NOUS ET NOS MONTAGNES",
+        "title_original": "",
+        "director": "HEINRICHS MALIYAN",
+        "country_duration": "ARMÉNIE 90'",
+        "genre": "CINÉMA ARMÉNIEN"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "WOMEN AND CHILD",
+        "title_original": "",
+        "director": "SAEED ROUSTAEE",
+        "country_duration": "IRAN 131'",
+        "genre": "CINÉMA DU MONDE"
+      }
+    ]
+  },
+  {
+    "venue": "IBN RACHIQ",
+    "date": "MERCREDI 17 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "L'ÉTÉ DES POISSONS VOLANTS",
+        "title_original": "",
+        "director": "MARCELA SAID",
+        "country_duration": "CHILI 95'",
+        "genre": "CINÉMA AMÉRIQUE LATINE"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "FIFAK PROGRAMME COURTS-MÉTRAGES",
+        "title_original": "",
+        "director": "",
+        "country_duration": "76'",
+        "genre": "FILMS FIFAK"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "CRÉPUSCULE DES OMBRES",
+        "title_original": "غروب الظلال",
+        "director": "MOHAMMED LAKHDAR-HAMINA",
+        "country_duration": "ALGÉRIE 114'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      }
+    ]
+  },
+  {
+    "venue": "IBN RACHIQ",
+    "date": "JEUDI 18 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "FOR ILEF",
+        "title_original": "لإيلف",
+        "director": "SABER BACCOUCH",
+        "country_duration": "TUNISIE 102'",
+        "genre": "PANORAMA CINÉMA TUNISIEN"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "ON THIS PAINT",
+        "title_original": "على هذه اللوحة",
+        "director": "YOUNES BEN HAJRIA",
+        "country_duration": "TUNISIE 65'",
+        "genre": "PANORAMA CINÉMA TUNISIEN"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "UNDER THE SKY OF DAMASCUS",
+        "title_original": "تحت سماء دمشق",
+        "director": "HEBA KHALED, TALAL DERKI, ALI WAJEEH",
+        "country_duration": "SYRIE 88'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      }
+    ]
+  },
+  {
+    "venue": "IBN RACHIQ",
+    "date": "VENDREDI 19 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "L'ARBRE DU SOIR",
+        "title_original": "شجرة المساء",
+        "director": "ADEL BAKRI",
+        "country_duration": "TUNISIE 122'",
+        "genre": "PANORAMA CINÉMA TUNISIEN"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "SHADOWS OF FORGOTTEN ANCESTORS",
+        "title_original": "",
+        "director": "SERGEI PARAJANOV",
+        "country_duration": "ARMÉNIE 96'",
+        "genre": "CINÉMA ARMÉNIEN"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "COMPAÑEROS - LA NOCHE DE 12 AÑOS",
+        "title_original": "",
+        "director": "ÁLVARO BRECHNER",
+        "country_duration": "URUGUAY 122'",
+        "genre": "CINÉMA AMÉRIQUE LATINE"
+      }
+    ]
+  },
+  {
+    "venue": "IBN RACHIQ",
+    "date": "SAMEDI 20 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "POIDS PLUME",
+        "title_original": "وزن الريشة",
+        "director": "GHAZI ZAGHBANI",
+        "country_duration": "TUNISIE 90'",
+        "genre": "PANORAMA CINÉMA TUNISIEN"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "THE COLOR OF POMEGRANATES",
+        "title_original": "",
+        "director": "SERGEI PARAJANOV",
+        "country_duration": "ARMÉNIE 80'",
+        "genre": "CINÉMA ARMÉNIEN"
+      },
+      {
+        "time": "20:30",
+        "title_translated": "SORDA",
+        "title_original": "",
+        "director": "EVA LIBERTAD",
+        "country_duration": "ESPAGNE 109'",
+        "genre": "CINÉMA ESPAGNOL"
+      }
+    ]
+  },
+  {
+    "venue": "COLISÉE",
+    "date": "DIMANCHE 14 DEC",
+    "films": [
+      {
+        "time": "13:00",
+        "title_translated": "MAKING OF",
+        "title_original": "آخر فيلم",
+        "director": "NOURI BOUZID",
+        "country_duration": "TUNISIE 115'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "16:00",
+        "title_translated": "PROGRAMME 1 PANORAMA COURTS MÉTRAGES",
+        "title_original": "",
+        "director": "",
+        "country_duration": "91'",
+        "genre": "PANORAMA CINÉMA TUNISIEN"
+      },
+      {
+        "time": "19:00",
+        "title_translated": "LA MEULE",
+        "title_original": "قليب",
+        "director": "FREDJ TRABELSI",
+        "country_duration": "TUNISIE 73'",
+        "genre": "PANORAMA CINÉMA TUNISIEN"
+      }
+    ]
+  },
+  {
+    "venue": "COLISÉE",
+    "date": "LUNDI 15 DEC",
+    "films": [
+      {
+        "time": "13:00",
+        "title_translated": "THY WOMB",
+        "title_original": "",
+        "director": "BRILLANTE MENDOZA",
+        "country_duration": "PHILLIPINES 106'",
+        "genre": "CINÉMA PHILIPPIN"
+      },
+      {
+        "time": "16:00",
+        "title_translated": "PROGRAMME 2 PANORAMA COURTS MÉTRAGES",
+        "title_original": "",
+        "director": "",
+        "country_duration": "100'",
+        "genre": "PANORAMA CINÉMA TUNISIEN"
+      },
+      {
+        "time": "19:00",
+        "title_translated": "THE MADMAN",
+        "title_original": "المجنون",
+        "director": "AKRAM ADOUANI",
+        "country_duration": "TUNISIE 90'",
+        "genre": "PANORAMA CINÉMA TUNISIEN"
+      }
+    ]
+  },
+  {
+    "venue": "COLISÉE",
+    "date": "MARDI 16 DEC",
+    "films": [
+      {
+        "time": "13:00",
+        "title_translated": "SAKALING HINDI MAKARATING",
+        "title_original": "",
+        "director": "ICE IDANAN",
+        "country_duration": "PHILLIPINES 87'",
+        "genre": "CINÉMA PHILIPPIN"
+      },
+      {
+        "time": "16:00",
+        "title_translated": "LA VILLA",
+        "title_original": "دار الناس",
+        "director": "MOHAMED DAMMAK",
+        "country_duration": "TUNISIE 83'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "19:00",
+        "title_translated": "FOR ILEF",
+        "title_original": "لإيلف",
+        "director": "SABER BACCOUCH",
+        "country_duration": "TUNISIE 102'",
+        "genre": "PANORAMA CINÉMA TUNISIEN"
+      }
+    ]
+  },
+  {
+    "venue": "COLISÉE",
+    "date": "MERCREDI 17 DEC",
+    "films": [
+      {
+        "time": "13:00",
+        "title_translated": "LE DERNIER MIRAGE",
+        "title_original": "السراب الأخير",
+        "director": "NIDHAL CHATTA",
+        "country_duration": "TUNISIE 94'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "16:00",
+        "title_translated": "ON THIS PAINT",
+        "title_original": "على هذه اللوحة",
+        "director": "YOUNES BEN HAJRIA",
+        "country_duration": "TUNISIE 65'",
+        "genre": "PANORAMA CINÉMA TUNISIEN"
+      },
+      {
+        "time": "19:00",
+        "title_translated": "L'ARBRE DU SOIR",
+        "title_original": "شجرة المساء",
+        "director": "ADEL BAKRI",
+        "country_duration": "TUNISIE 122'",
+        "genre": "PANORAMA CINÉMA TUNISIEN"
+      }
+    ]
+  },
+  {
+    "venue": "COLISÉE",
+    "date": "JEUDI 18 DEC",
+    "films": [
+      {
+        "time": "13:00",
+        "title_translated": "JOHN DENVER TRENDING",
+        "title_original": "",
+        "director": "ARDEN ROD CONDEZ",
+        "country_duration": "PHILLIPINES 96'",
+        "genre": "CINÉMA PHILIPPIN"
+      },
+      {
+        "time": "16:00",
+        "title_translated": "HEADBANG LULLABY",
+        "title_original": "ضربة في الرأس",
+        "director": "HISHAM LASRI",
+        "country_duration": "MAROC 111'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      },
+      {
+        "time": "19:00",
+        "title_translated": "POIDS PLUME",
+        "title_original": "وزن الريشة",
+        "director": "GHAZI ZAGHBANI",
+        "country_duration": "TUNISIE 90'",
+        "genre": "PANORAMA CINÉMA TUNISIEN"
+      }
+    ]
+  },
+  {
+    "venue": "COLISÉE",
+    "date": "VENDREDI 19 DEC",
+    "films": [
+      {
+        "time": "13:00",
+        "title_translated": "PROGRAMME COURTS MÉTRAGES HOMMAGE ABDELAZIZ BEN MLOUKA",
+        "title_original": "",
+        "director": "",
+        "country_duration": "76'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "16:00",
+        "title_translated": "CAMERA ARABE",
+        "title_original": "كاميرا عربية",
+        "director": "FÉRID BOUGHEDIR",
+        "country_duration": "TUNISIE 65'",
+        "genre": "JCC CLASSIQUE FILMS RESTAURÉS"
+      },
+      {
+        "time": "19:00",
+        "title_translated": "FLEUR D'OUBLI",
+        "title_original": "شخاش",
+        "director": "SALMA BACCAR",
+        "country_duration": "TUNISIE 100'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      }
+    ]
+  },
+  {
+    "venue": "COLISÉE",
+    "date": "SAMEDI 20 DEC",
+    "films": [
+      {
+        "time": "13:00",
+        "title_translated": "INSIANG",
+        "title_original": "",
+        "director": "LINO BROCKA",
+        "country_duration": "PHILLIPINES 95'",
+        "genre": "CINÉMA PHILIPPIN"
+      },
+      {
+        "time": "16:00",
+        "title_translated": "HANGING GARDENS",
+        "title_original": "جنائـن معلـقة",
+        "director": "AHMED AL-DARADJI",
+        "country_duration": "IRAK 117'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      },
+      {
+        "time": "19:00",
+        "title_translated": "GOSPEL OF THE BEAST",
+        "title_original": "",
+        "director": "SHERON DAYOC",
+        "country_duration": "PHILLIPINES 85'",
+        "genre": "CINÉMA PHILIPPIN"
+      }
+    ]
+  },
+  {
+    "venue": "AFRICA",
+    "date": "DIMANCHE 14 DEC",
+    "films": [
+      {
+        "time": "12:00",
+        "title_translated": "TRILOGIE DOCUMENTAIRE MOKHTAR LADJIMI",
+        "title_original": "",
+        "director": "",
+        "country_duration": "166'",
+        "genre": "TRILOGIE"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "YOU WILL DIE AT 20",
+        "title_original": "ستموت في العشرين",
+        "director": "AMJAD ABU ALALA",
+        "country_duration": "SOUDAN 104'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "EN ATTENDANT LES HIRONDELLES",
+        "title_original": "",
+        "director": "KARIM MOUSSAOUI",
+        "country_duration": "ALGÉRIE 108'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      }
+    ]
+  },
+  {
+    "venue": "AFRICA",
+    "date": "LUNDI 15 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "SHADOWS OF FORGOTTEN ANCESTORS",
+        "title_original": "",
+        "director": "SERGEI PARAJANOV",
+        "country_duration": "ARMÉNIE 96'",
+        "genre": "CINÉMA ARMÉNIEN"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "TEZETA",
+        "title_original": "",
+        "director": "ARAMAZT KALAYJIAN & GAREGIN PAPOYAN",
+        "country_duration": "ARMÉNIE 100'",
+        "genre": "CINÉMA ARMÉNIEN"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "IN THE LAND OF ARTO",
+        "title_original": "",
+        "director": "TAMARA STEPANYAN",
+        "country_duration": "ARMÉNIE 105'",
+        "genre": "CINÉMA ARMÉNIEN"
+      }
+    ]
+  },
+  {
+    "venue": "AFRICA",
+    "date": "MARDI 16 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "THE COLOR OF POMEGRANATES",
+        "title_original": "صربة في الرأس",
+        "director": "SERGEI PARAJANOV",
+        "country_duration": "ARMÉNIE 80'",
+        "genre": "CINÉMA ARMÉNIEN"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "HEADBANG LULLABY",
+        "title_original": "",
+        "director": "HISHAM LASRI",
+        "country_duration": "MAROC 111'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "ASHKAL",
+        "title_original": "",
+        "director": "YOUSSEF CHEBBI",
+        "country_duration": "TUNISIE 92'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      }
+    ]
+  },
+  {
+    "venue": "AFRICA",
+    "date": "MERCREDI 17 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "IN THE LAST DAYS OF THE CITY",
+        "title_original": "آخر أيام المدينة",
+        "director": "TAMER EL SAÏD",
+        "country_duration": "EGYPTE 118'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "DONGA",
+        "title_original": "دونقا",
+        "director": "MUHANNAD LAMIN",
+        "country_duration": "LYBIE 90'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "THE BURDENED",
+        "title_original": "المرهقون",
+        "director": "AMR GAMAL",
+        "country_duration": "YÉMEN 91'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      }
+    ]
+  },
+  {
+    "venue": "AFRICA",
+    "date": "JEUDI 18 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "HANGING GARDENS",
+        "title_original": "جنائـن معلـقة",
+        "director": "AHMED AL-DARADJI",
+        "country_duration": "IRAK 117'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "TONRATUM: THE STORY OF ARMENIA TOLD BY WOMEN",
+        "title_original": "",
+        "director": "INNA MIKHITARYAN",
+        "country_duration": "ARMÉNIE 84'",
+        "genre": "CINÉMA ARMÉNIEN"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "AURORA'S SUNRISE",
+        "title_original": "",
+        "director": "INNA SAHAKYAN",
+        "country_duration": "ARMÉNIE 98'",
+        "genre": "CINÉMA ARMÉNIEN"
+      }
+    ]
+  },
+  {
+    "venue": "AFRICA",
+    "date": "VENDREDI 19 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "BETWEEN HEAVEN AND EARTH",
+        "title_original": "بين الجنة والأرض",
+        "director": "NAJWA NAJJAR",
+        "country_duration": "PALESTINE 92'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "NUITS SANS SOMMEIL",
+        "title_original": "ليال بلا نوم",
+        "director": "ELIANE RAHEB",
+        "country_duration": "LIBAN 128'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "MY ARMENIAN PHANTOMS",
+        "title_original": "",
+        "director": "TAMARA STEPANYAN",
+        "country_duration": "ARMÉNIE 75'",
+        "genre": "CINÉMA ARMÉNIEN"
+      }
+    ]
+  },
+  {
+    "venue": "AFRICA",
+    "date": "SAMEDI 20 DEC",
+    "films": [
+      {
+        "time": "15:00",
+        "title_translated": "BONJOUR C'EST MOI",
+        "title_original": "",
+        "director": "FRUNZE DOVLA TYAN",
+        "country_duration": "ARMÉNIE 137'",
+        "genre": "CINÉMA ARMÉNIEN"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "LA NATURE LES SAISONS",
+        "title_original": "",
+        "director": "ARTAVAZD PELECHIAN",
+        "country_duration": "ARMÉNIE 93'",
+        "genre": "CINÉMA ARMÉNIEN"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "UNDER THE SKY OF DAMASCUS",
+        "title_original": "تحت سماء دمشق",
+        "director": "HEBA KHALED, TALAL DERKI, ALI WAJEEH",
+        "country_duration": "SYRIE 88'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      }
+    ]
+  },
+  {
+    "venue": "ALHAMBRA ZEPHYR",
+    "date": "DIMANCHE 14 DEC",
+    "films": [
+      {
+        "time": "13:00",
+        "title_translated": "L'ÉTÉ DES POISSONS VOLANTS",
+        "title_original": "",
+        "director": "MARCELA SAID",
+        "country_duration": "CHILI 95'",
+        "genre": "CINÉMA AMÉRIQUE LATINE"
+      },
+      {
+        "time": "16:00",
+        "title_translated": "SIRAT",
+        "title_original": "",
+        "director": "OLIVER LAXE",
+        "country_duration": "ESPAGNE 115'",
+        "genre": "CINÉMA DU MONDE"
+      },
+      {
+        "time": "19:00",
+        "title_translated": "COMPAÑEROS – LA NOCHE DE 12 AÑOS",
+        "title_original": "",
+        "director": "ÁLVARO BRECHNER",
+        "country_duration": "URUGUAY 122'",
+        "genre": "CINÉMA AMÉRIQUE LATINE"
+      },
+      {
+        "time": "21:30",
+        "title_translated": "IN THE LAND OF ARTO",
+        "title_original": "",
+        "director": "TAMARA STEPANYAN",
+        "country_duration": "ARMÉNIE 105'",
+        "genre": "CINÉMA ARMÉNIEN"
+      }
+    ]
+  },
+  {
+    "venue": "ALHAMBRA ZEPHYR",
+    "date": "LUNDI 15 DEC",
+    "films": [
+      {
+        "time": "13:30",
+        "title_translated": "YOU WILL DIE AT 20",
+        "title_original": "ستموت في العشرين",
+        "director": "AMJAD ABU ALALA",
+        "country_duration": "SOUDAN 104'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      },
+      {
+        "time": "16:00",
+        "title_translated": "TONRATUM: THE STORY OF ARMENIA TOLD BY WOMEN",
+        "title_original": "",
+        "director": "INNA MIKHITARYAN",
+        "country_duration": "ARMÉNIE 84'",
+        "genre": "CINÉMA ARMÉNIEN"
+      },
+      {
+        "time": "19:00",
+        "title_translated": "UTAMA",
+        "title_original": "",
+        "director": "ALEJANDRO LOAYZA GRISI",
+        "country_duration": "BOLIVIE 87'",
+        "genre": "CINÉMA AMÉRIQUE LATINE"
+      },
+      {
+        "time": "21:30",
+        "title_translated": "KOMEDIE ELAHI DIVINE COMEDY",
+        "title_original": "",
+        "director": "ALI ASGARI",
+        "country_duration": "IRAN 98'",
+        "genre": "CINÉMA DU MONDE"
+      }
+    ]
+  },
+  {
+    "venue": "ALHAMBRA ZEPHYR",
+    "date": "MARDI 16 DEC",
+    "films": [
+      {
+        "time": "13:30",
+        "title_translated": "PROGRAMME 1 PANORAMA COURTS MÉTRAGES",
+        "title_original": "",
+        "director": "",
+        "country_duration": "91'",
+        "genre": "PANORAMA CINÉMA TUNISIEN"
+      },
+      {
+        "time": "16:00",
+        "title_translated": "GAZA GRAD",
+        "title_original": "غزة كراد",
+        "director": "SAWSAN QAOUD",
+        "country_duration": "PALESTINE 77'",
+        "genre": "HORS COMPÉTITION"
+      },
+      {
+        "time": "19:00",
+        "title_translated": "THE SETTLEMENT",
+        "title_original": "المستعمرة",
+        "director": "MOHAMED RASHAD",
+        "country_duration": "EGYPTE 93'",
+        "genre": "SÉANCE SPÉCIALE"
+      },
+      {
+        "time": "21:30",
+        "title_translated": "AURORA'S SUNRISE",
+        "title_original": "",
+        "director": "INNA SAHAKYAN",
+        "country_duration": "ARMÉNIE 98'",
+        "genre": "CINÉMA ARMÉNIEN"
+      }
+    ]
+  },
+  {
+    "venue": "ALHAMBRA ZEPHYR",
+    "date": "MERCREDI 17 DEC",
+    "films": [
+      {
+        "time": "13:30",
+        "title_translated": "PROGRAMME 2 PANORAMA COURTS MÉTRAGES",
+        "title_original": "",
+        "director": "",
+        "country_duration": "100'",
+        "genre": "PANORAMA CINÉMA TUNISIEN"
+      },
+      {
+        "time": "16:00",
+        "title_translated": "LATE SHIFT",
+        "title_original": "",
+        "director": "PETRA VOLPE",
+        "country_duration": "SUISSE 92'",
+        "genre": "CINÉMA DU MONDE"
+      },
+      {
+        "time": "19:00",
+        "title_translated": "LE PARA-DIS",
+        "title_original": "الجنة",
+        "director": "MAJDI LAKHDAR",
+        "country_duration": "TUNISIE 82'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "21:30",
+        "title_translated": "THE VOICE OF HIND RAJAB",
+        "title_original": "صوت هند رجب",
+        "director": "KAOUTHER BEN HANIA",
+        "country_duration": "TUNISIE 90'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "ALHAMBRA ZEPHYR",
+    "date": "JEUDI 18 DEC",
+    "films": [
+      {
+        "time": "13:30",
+        "title_translated": "EN ATTENDANT LES HIRONDELLES",
+        "title_original": "",
+        "director": "KARIM MOUSSAOUI",
+        "country_duration": "ALGÉRIE 108'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      },
+      {
+        "time": "16:00",
+        "title_translated": "TÊTES BRÛLÉES",
+        "title_original": "",
+        "director": "MAJA-AJMIA YDE ZELLAMA",
+        "country_duration": "TUNISIE 84'",
+        "genre": "SÉANCE SPÉCIALE"
+      },
+      {
+        "time": "19:00",
+        "title_translated": "NOTRE SEMENCE",
+        "title_original": "زريعتنا",
+        "director": "ANIS LASSOUED",
+        "country_duration": "TUNISIE 80'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "21:30",
+        "title_translated": "PROMISED SKY",
+        "title_original": "سماء بلا أرض",
+        "director": "ERIGE SEHIRI",
+        "country_duration": "TUNISIE 92'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "ALHAMBRA ZEPHYR",
+    "date": "VENDREDI 19 DEC",
+    "films": [
+      {
+        "time": "13:30",
+        "title_translated": "TEZETA",
+        "title_original": "",
+        "director": "ARAMAZT KALAYJIAN & GAREGIN PAPOYAN",
+        "country_duration": "ARMÉNIE 100'",
+        "genre": "CINÉMA ARMÉNIEN"
+      },
+      {
+        "time": "16:00",
+        "title_translated": "ONE MORE SHOW",
+        "title_original": "ضليل عنا عرض",
+        "director": "MAI SAAD & AHMAD AL DANAF",
+        "country_duration": "EGYPTE 72'",
+        "genre": "HORS COMPÉTITION"
+      },
+      {
+        "time": "19:00",
+        "title_translated": "ON THE HILL",
+        "title_original": "فوق التل",
+        "director": "BELHASSEN HANDOUS",
+        "country_duration": "TUNISIE 77'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "21:30",
+        "title_translated": "WHERE THE WIND COMES FROM",
+        "title_original": "وين ياخذنا الريح",
+        "director": "AMEL GUELLATY",
+        "country_duration": "TUNISIE 99'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "ALHAMBRA ZEPHYR",
+    "date": "SAMEDI 20 DEC",
+    "films": [
+      {
+        "time": "13:30",
+        "title_translated": "ROQIA",
+        "title_original": "رقية",
+        "director": "YANIS KOUSSIM",
+        "country_duration": "ALGÉRIE 94'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "16:00",
+        "title_translated": "I WILL REMEMBER YOU",
+        "title_original": "لن أنساك",
+        "director": "MOHAMED RIDA GUEZNAI",
+        "country_duration": "MAROC 93'",
+        "genre": "HORS COMPÉTITION"
+      },
+      {
+        "time": "19:00",
+        "title_translated": "BETWEEN HEAVEN AND EARTH",
+        "title_original": "بين الجنة والأرض",
+        "director": "NAJWA NAJJAR",
+        "country_duration": "PALESTINE 92'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      },
+      {
+        "time": "21:30",
+        "title_translated": "LES BRUITS DE RECIFE",
+        "title_original": "",
+        "director": "KLEBER MENDONÇA FILHO",
+        "country_duration": "BRÉSIL 131'",
+        "genre": "CINÉMA AMÉRIQUE LATINE"
+      }
+    ]
+  },
+  {
+    "venue": "L'AGORA",
+    "date": "DIMANCHE 14 DEC",
+    "films": [
+      {
+        "time": "15:30",
+        "title_translated": "WOMEN AND CHILD",
+        "title_original": "",
+        "director": "SAEED ROUSTAEE",
+        "country_duration": "IRAN 131'",
+        "genre": "CINÉMA DU MONDE"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "GOSPEL OF THE BEAST",
+        "title_original": "",
+        "director": "SHERON DAYOC",
+        "country_duration": "PHILLIPINES 85'",
+        "genre": "CINÉMA PHILIPPIN"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "DONGA",
+        "title_original": "دونقا",
+        "director": "MUHANNAD LAMIN",
+        "country_duration": "LYBIE 90'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      }
+    ]
+  },
+  {
+    "venue": "L'AGORA",
+    "date": "LUNDI 15 DEC",
+    "films": [
+      {
+        "time": "15:30",
+        "title_translated": "ASHKAL",
+        "title_original": "",
+        "director": "YOUSSEF CHEBBI",
+        "country_duration": "TUNISIE 92'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "JOHN DENVER TRENDING",
+        "title_original": "",
+        "director": "ARDEN ROD CONDEZ",
+        "country_duration": "PHILLIPINES 96'",
+        "genre": "CINÉMA PHILIPPIN"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "REDISCOVERING FANON",
+        "title_original": "",
+        "director": "RICO SPEIGHT",
+        "country_duration": "USA 83'",
+        "genre": "SÉANCE SPÉCIALE"
+      }
+    ]
+  },
+  {
+    "venue": "L'AGORA",
+    "date": "MARDI 16 DEC",
+    "films": [
+      {
+        "time": "15:30",
+        "title_translated": "LITI LITI / THE ATTACHEMENT",
+        "title_original": "",
+        "director": "MAMADOU KHOUMA GUEYE",
+        "country_duration": "SÉNÉGAL 76'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "FIVE EYES",
+        "title_original": "بعيون مغربية",
+        "director": "KARIM DEBBAGH",
+        "country_duration": "MAROC 75'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "MY FATHER'S SHADOW",
+        "title_original": "",
+        "director": "AKINOLA DAVIES JR",
+        "country_duration": "NIGÉRIA 93'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "L'AGORA",
+    "date": "MERCREDI 17 DEC",
+    "films": [
+      {
+        "time": "15:30",
+        "title_translated": "PROGRAMME HOMMAGE PAULIN SOUMANOU VIEYRA",
+        "title_original": "",
+        "director": "",
+        "country_duration": "114'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "THE OTHER... RAEBURN",
+        "title_original": "",
+        "director": "DAVID-PIERRE FILA",
+        "country_duration": "RÉPUBLIQUE DU CONGO 113'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "SINK",
+        "title_original": "غرق",
+        "director": "ZAIN DURAIE",
+        "country_duration": "JORDANIE 88'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "L'AGORA",
+    "date": "JEUDI 18 DEC",
+    "films": [
+      {
+        "time": "15:30",
+        "title_translated": "IRKALLA: GILGAMESH'S DREAM",
+        "title_original": "أركاللا : حلم كلكامش",
+        "director": "MOHAMED JABARAH AL-DARADJI",
+        "country_duration": "IRAK 109'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "L'HOMME QUI PLANTE LES BAOBABS",
+        "title_original": "",
+        "director": "K.MICHEL ZONGO",
+        "country_duration": "BURKINA FASO 74'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "HIJRA",
+        "title_original": "هجرة",
+        "director": "SHAHAD AMEEN",
+        "country_duration": "ARABIE SAOUDITE 114'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "L'AGORA",
+    "date": "VENDREDI 19 DEC",
+    "films": [
+      {
+        "time": "15:30",
+        "title_translated": "THE LIONS BY THE RIVER TIGRIS",
+        "title_original": "الأسود على نهر دجلة",
+        "director": "ZARADASHT AHMED",
+        "country_duration": "IRAK 91'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "PROGRAMME 3 COMPÉTITION OFFICIELLE COURTS MÉTRAGES",
+        "title_original": "",
+        "director": "",
+        "country_duration": "103'",
+        "genre": "CO COURTS MÉTRAGES"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "DIYA",
+        "title_original": "",
+        "director": "ACHILLE RONAIMOU",
+        "country_duration": "TCHAD 96'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "L'AGORA",
+    "date": "SAMEDI 20 DEC",
+    "films": [
+      {
+        "time": "15:30",
+        "title_translated": "CARTE BLANCHE AUX COURTS CORSES",
+        "title_original": "",
+        "director": "",
+        "country_duration": "79'",
+        "genre": "CARTE BLANCHE AUX COURTS CORSES"
+      },
+      {
+        "time": "18:00",
+        "title_translated": "L'AGENT SECRET",
+        "title_original": "",
+        "director": "KLEBER MENDONÇA FILHO",
+        "country_duration": "BRÉSIL 160'",
+        "genre": "CINÉMA DU MONDE"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "NUITS SANS SOMMEIL",
+        "title_original": "ليال بلا نوم",
+        "director": "ELIANE RAHEB",
+        "country_duration": "LIBAN 128'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      }
+    ]
+  },
+  {
+    "venue": "CINEMADART",
+    "date": "DIMANCHE 14 DEC",
+    "films": [
+      {
+        "time": "15:30",
+        "title_translated": "CERF-VOLANT",
+        "title_original": "طيارة من ورق",
+        "director": "RANDA CHAHAL SABBAGH",
+        "country_duration": "LIBAN 80'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "PALESTINE 36",
+        "title_original": "فلسطين ٣٦",
+        "director": "ANNEMARIE JACIR",
+        "country_duration": "PALESTINE 119'",
+        "genre": "FILM D'OUVERTURE"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "THE LAST VIKING",
+        "title_original": "",
+        "director": "ANDERS THOMAS JENSEN",
+        "country_duration": "DANEMARK 116'",
+        "genre": "CINÉMA DU MONDE"
+      }
+    ]
+  },
+  {
+    "venue": "CINEMADART",
+    "date": "LUNDI 15 DEC",
+    "films": [
+      {
+        "time": "15:30",
+        "title_translated": "NAHLA",
+        "title_original": "نهلة",
+        "director": "FAROUK BELLOUFA",
+        "country_duration": "ALGÉRIE 111'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "IN THE LAST DAYS OF THE CITY",
+        "title_original": "آخر أيام المدينة",
+        "director": "TAMER EL SAÏD",
+        "country_duration": "EGYPTE 118'",
+        "genre": "NOUVEAU CINÉMA ARABE"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "ROMERIA",
+        "title_original": "",
+        "director": "CARLA SIMÓN",
+        "country_duration": "ESPAGNE 115'",
+        "genre": "CINÉMA ESPAGNOL"
+      }
+    ]
+  },
+  {
+    "venue": "CINEMADART",
+    "date": "MARDI 16 DEC",
+    "films": [
+      {
+        "time": "15:30",
+        "title_translated": "CIMETIÈRE DE VIE",
+        "title_original": "مقبرة الحياة",
+        "director": "MAMADOU MOUSTAPHA GUEYE",
+        "country_duration": "SÉNÉGAL 60'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "KATANGA LA DANSE DES SCORPIONS",
+        "title_original": "",
+        "director": "DANI KOUYATÉ",
+        "country_duration": "BURKINA FASO 114'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "ONCE UPON A TIME IN GAZA",
+        "title_original": "كان يا مكان في غزة",
+        "director": "ARAB ET TARZAN NASSER",
+        "country_duration": "PALESTINE 90'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "CINEMADART",
+    "date": "MERCREDI 17 DEC",
+    "films": [
+      {
+        "time": "15:30",
+        "title_translated": "CHRONIQUE DES ANNÉES DE BRAISE",
+        "title_original": "وقائع سنين الجمر",
+        "director": "MOHAMMED LAKHDAR-HAMINA",
+        "country_duration": "ALGÉRIE 177'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "MY FATHER'S SCENT",
+        "title_original": "كولونيا",
+        "director": "MOHAMED SIAM",
+        "country_duration": "EGYPTE 96'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "CINEMADART",
+    "date": "JEUDI 18 DEC",
+    "films": [
+      {
+        "time": "15:30",
+        "title_translated": "RETURN TO HAIFA",
+        "title_original": "عائد إلى حيفا",
+        "director": "KASSEM HAWAL",
+        "country_duration": "IRAK - PALESTINE 76'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "CINEMA KAWAKEB",
+        "title_original": "سينما كواكب",
+        "director": "MAHMOUD AL MASSAD",
+        "country_duration": "JORDANIE 78'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "THE STORIES",
+        "title_original": "القصص",
+        "director": "ABU BAKR SHAWKY",
+        "country_duration": "EGYPTE 111'",
+        "genre": "CO LM FICTION"
+      }
+    ]
+  },
+  {
+    "venue": "CINEMADART",
+    "date": "VENDREDI 19 DEC",
+    "films": [
+      {
+        "time": "15:30",
+        "title_translated": "COTTON QUEEN",
+        "title_original": "ملكة القطن",
+        "director": "SUZANNAH MIRGHANI",
+        "country_duration": "SOUDAN 93'",
+        "genre": "CO LM FICTION"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "HOME MOVIE ON LOCATION",
+        "title_original": "مواقع فيلم عائلي",
+        "director": "VIOLA SHAFIK",
+        "country_duration": "EGYPTE 100'",
+        "genre": "CO LM DOC"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "TALES OF THE WOUNDED LAND",
+        "title_original": "",
+        "director": "ABBAS FAHDEL",
+        "country_duration": "IRAK 120'",
+        "genre": "CO LM DOC"
+      }
+    ]
+  },
+  {
+    "venue": "CINEMADART",
+    "date": "SAMEDI 20 DEC",
+    "films": [
+      {
+        "time": "15:30",
+        "title_translated": "LE VENT DES AURÈS",
+        "title_original": "ريح السد",
+        "director": "MOHAMMED LAKHDAR-HAMINA",
+        "country_duration": "ALGÉRIE 98'",
+        "genre": "HOMMAGES ET CÉLÉBRATIONS"
+      },
+      {
+        "time": "18:30",
+        "title_translated": "FATHER MOTHER SISTER BROTHER",
+        "title_original": "",
+        "director": "JIM JARMUSCH",
+        "country_duration": "USA 110'",
+        "genre": "CINÉMA DU MONDE"
+      },
+      {
+        "time": "21:00",
+        "title_translated": "MORLAIX",
+        "title_original": "",
+        "director": "JAIME ROSALES",
+        "country_duration": "ESPAGNE 124'",
+        "genre": "CINÉMA ESPAGNOL"
+      }
+    ]
+  }
+]
