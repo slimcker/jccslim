@@ -52,14 +52,14 @@
         h1 {
             font-size: 2.5em;
             margin-bottom: 8px;
-            background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-purple) 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #ffa7b4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .subtitle {
-            color: #94a3b8;
+            color: black;
             font-size: 1.1em;
         }
 
@@ -411,13 +411,12 @@
 <body>
     <div class="container">
         <header>
-            <h1>🎬 moteur de recherche films JCC</h1>
+            <h1 style="color:black;">🎬 moteur de recherche films JCC</h1>
             <div class="creator-line">created by @slim</div>
-            <p class="subtitle">All movies from the festival across all cinemas</p>
         </header>
 
         <div class="controls">
-            <input type="text" id="searchInput" placeholder="Search by title, director, or country...">
+            <input type="text" id="searchInput" placeholder="Search by title or director">
         
             <select id="cinemaFilter">
                 <option value="">All Cinemas</option>
