@@ -39,6 +39,7 @@
             min-height: 100vh;
             font-weight: 400;
             letter-spacing: -0.01em;
+            position: relative;
         }
 
         .container {
@@ -476,6 +477,24 @@
             pointer-events: none;
             z-index: 999;
         }
+        body::after {
+            content: "";
+            position: fixed;
+            inset: -20%;
+            pointer-events: none;
+            z-index: -1;
+            filter: blur(100px);
+            opacity: 0.36;
+            background-image: linear-gradient(120deg,
+                rgba(230,102,27,0.45) 0%,
+                rgba(224,44,29,0.40) 25%,
+                rgba(215,24,109,0.38) 50%,
+                rgba(54,145,204,0.38) 75%,
+                rgba(39,67,144,0.36) 100%
+            );
+            transform: rotate(var(--bg-rot, 0deg));
+            transition: transform 10s ease, opacity 1.4s ease;
+        }
 
         /* Mobile responsiveness */
         @media (max-width: 768px) {
@@ -910,6 +929,7 @@ class="stat-label">salles de cinéma</div>
 
         function initializeApp() {
             applyFilters();
+            startBackgroundDrift();
         }
 
         /* removed single-select population; now using modal multi-selects */
@@ -1503,6 +1523,15 @@ class="stat-label">salles de cinéma</div>
 
         // Load JSON data (falls back to embedded dataset on error)
         loadData();
+        function startBackgroundDrift() {
+            function setRandomRotation() {
+                const deg = Math.floor(Math.random() * 360);
+                document.body.style.setProperty('--bg-rot', `${deg}deg`);
+            }
+            setRandomRotation();
+            if (window.__bgDriftTimer) clearInterval(window.__bgDriftTimer);
+            window.__bgDriftTimer = setInterval(setRandomRotation, 20000);
+        }
     </script>
     <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-lg0adXov3WdxiNZn9sasY.js"></script>
