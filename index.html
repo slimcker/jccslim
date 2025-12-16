@@ -61,6 +61,14 @@
             margin-bottom: 6px;
             text-transform: uppercase;
         }
+        .title-logo {
+            height: 48px;
+            width: 48px;
+            object-fit: cover;
+            vertical-align: middle;
+            margin-right: 10px;
+            border-radius: 6px;
+        }
 
         .subtitle {
             color: var(--muted);
@@ -527,7 +535,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>🎬 moteur de recherche films JCC</h1>
+            <h1><img src="jcc.jpg" alt="JCC" class="title-logo"> moteur de recherche films JCC</h1>
             <div class="creator-line">created by @slim</div>
             <p class="subtitle">Tous les films du festival JCC dans tous les cinémas</p>
         </header>
@@ -537,13 +545,14 @@
             <button id="countryFilterBtn" class="filter-toggle-btn menu" onclick="openCountryModal()">Pays</button>
             <button id="cinemaFilterBtn" class="filter-toggle-btn menu" onclick="openCinemaModal()">Salle de cinéma</button>
             <button id="categoryFilterBtn" class="filter-toggle-btn menu" onclick="openCategoryModal()">Categories</button>
+            <button id="dateFilterBtn" class="filter-toggle-btn menu" onclick="openDateModal()">Date</button>
             <button id="todayBtn" class="filter-toggle-btn toggle" onclick="toggleTodaysMovies()">Films d'aujourd'hui seulement</button>
             <button id="coBtn" class="filter-toggle-btn toggle" onclick="toggleCOOnly()">competition officielle seulement</button>
             <div class="time-filter">
                 <label for="timeFrom">Temps à partir de</label>
                 <input type="time" id="timeFrom" step="60">
             </div>
-            <button class="reset-btn" onclick="resetFilters()">🔄 Réinitialiser le filtre</button>
+            <button class="reset-btn" onclick="resetFilters()">🔄 Reset Filters</button>
         </div>
 
         <div class="stats">
@@ -604,6 +613,20 @@ class="stat-label">salles de cinéma</div>
                 <div class="modal-actions">
                     <button onclick="clearCategorySelection()">Clear</button>
                     <button class="primary" onclick="applyCategorySelection()">OK</button>
+                </div>
+            </div>
+        </div>
+        <!-- Date Modal -->
+        <div id="dateModal" class="modal-backdrop" style="display:none;">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>Select Date</h3>
+                    <button class="close-btn" onclick="closeDateModal()">✖</button>
+                </div>
+                <div id="dateOptions" class="modal-body"></div>
+                <div class="modal-actions">
+                    <button onclick="clearDateSelection()">Clear</button>
+                    <button class="primary" onclick="applyDateSelection()">OK</button>
                 </div>
             </div>
         </div>
@@ -937,6 +960,7 @@ class="stat-label">salles de cinéma</div>
         let selectedCountriesFilter = [];
         let selectedCinemasFilter = [];
         let selectedCategoriesFilter = [];
+        let selectedDateFilter = null;
         // Canonical country names used for normalization and display
         const CANONICAL_COUNTRIES = [
             'TUNISIE','ALGÉRIE','ARABIE SAOUDITE','ARMÉNIE','BOLIVIE','BRÉSIL','BURKINA FASO','CHILI',
@@ -1014,7 +1038,8 @@ class="stat-label">salles de cinéma</div>
                     ? (!categorySingle || movie.category === categorySingle)
                     : selectedCategoriesFilter.includes(movie.category);
                 const coOnlyMatch = !showCOOnlyFilter || /^\s*CO\b/.test(movie.category || '');
-                const todayMatch = !showTodaysMoviesFilter || movie.date === todayDate;
+                const dateMatch = !selectedDateFilter || movie.date === selectedDateFilter;
+                const todayMatch = !showTodaysMoviesFilter || (!selectedDateFilter && movie.date === todayDate);
                 const movieTimeMin = parseTimeToMinutes(movie.time);
                 const timeMatch = !timeFromMin || (movieTimeMin !== null && movieTimeMin >= timeFromMin);
                 const movieCountriesBase = movie.country
@@ -1025,7 +1050,7 @@ class="stat-label">salles de cinéma</div>
                 const countrySelectionMatch = selectedCountriesFilter.length === 0 ||
                     movieCountriesBase.some(c => selectedKeys.includes(normalizeKeyCountry(c)));
 
-                return textMatch && cinemaMatch && categoryMatch && coOnlyMatch && todayMatch && timeMatch && countrySelectionMatch;
+                return textMatch && cinemaMatch && categoryMatch && coOnlyMatch && dateMatch && todayMatch && timeMatch && countrySelectionMatch;
             });
 
             updateStats();
@@ -1073,6 +1098,8 @@ class="stat-label">salles de cinéma</div>
             document.getElementById('todayBtn').classList.toggle('active', showTodaysMoviesFilter);
             if (showTodaysMoviesFilter) {
                 todayDate = computeTodayDateLabel();
+                selectedDateFilter = null;
+                buildDateOptions();
             }
             applyFilters();
         }
@@ -1376,6 +1403,7 @@ class="stat-label">salles de cinéma</div>
             selectedCountriesFilter = [];
             selectedCinemasFilter = [];
             selectedCategoriesFilter = [];
+            selectedDateFilter = null;
             filteredMovies = [...allMoviesData];
             updateStats();
             renderMovies();
@@ -1402,6 +1430,11 @@ class="stat-label">salles de cinéma</div>
             const modal = document.getElementById('categoryModal');
             modal.style.display = 'flex';
         }
+        function openDateModal() {
+            buildDateOptions();
+            const modal = document.getElementById('dateModal');
+            modal.style.display = 'flex';
+        }
 
         function closeCountryModal() {
             const modal = document.getElementById('countryModal');
@@ -1413,6 +1446,10 @@ class="stat-label">salles de cinéma</div>
         }
         function closeCategoryModal() {
             const modal = document.getElementById('categoryModal');
+            modal.style.display = 'none';
+        }
+        function closeDateModal() {
+            const modal = document.getElementById('dateModal');
             modal.style.display = 'none';
         }
 
@@ -1497,6 +1534,10 @@ class="stat-label">salles de cinéma</div>
             selectedCategoriesFilter = [];
             buildCategoryOptions();
         }
+        function clearDateSelection() {
+            selectedDateFilter = null;
+            buildDateOptions();
+        }
 
         function buildCinemaOptions() {
             const container = document.getElementById('cinemaOptions');
@@ -1520,6 +1561,32 @@ class="stat-label">salles de cinéma</div>
                         </label>`;
             }).join('');
         }
+        function buildDateOptions() {
+            const container = document.getElementById('dateOptions');
+            const seen = new Set();
+            const dates = [];
+            allMoviesData.forEach(m => {
+                const d = m.date;
+                if (d && !seen.has(d)) { seen.add(d); dates.push(d); }
+            });
+            container.innerHTML = dates.map(d => {
+                const checked = selectedDateFilter === d ? 'checked' : '';
+                return `<label class="country-option">
+                            <input type="radio" name="dateOption" value="${d}" ${checked}>
+                            <span>${d}</span>
+                        </label>`;
+            }).join('');
+        }
+        function applyDateSelection() {
+            const sel = document.querySelector('#dateOptions input[name="dateOption"]:checked');
+            selectedDateFilter = sel ? sel.value : null;
+            closeDateModal();
+            if (selectedDateFilter) {
+                showTodaysMoviesFilter = false;
+                const tb = document.getElementById('todayBtn'); if (tb) tb.classList.remove('active');
+            }
+            applyFilters();
+        }
 
         // Load JSON data (falls back to embedded dataset on error)
         loadData();
@@ -1542,4 +1609,3 @@ class="stat-label">salles de cinéma</div>
 </body>
 </html>
         
-
