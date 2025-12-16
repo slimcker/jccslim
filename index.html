@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JCC moteur de recherche</title>
+    <title>Film Festival Movie Database</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -425,12 +425,13 @@
             margin-bottom: 16px;
         }
         .reset-btn {
-            background: var(--bg);
-            color: var(--fg);
-            border-color: var(--accent);
+            background: #b00020;
+            color: #ffffff;
+            border-color: #b00020;
         }
         .reset-btn:hover {
-            box-shadow: 0 8px 16px rgba(0, 209, 255, 0.45);
+            background: #d0002a;
+            box-shadow: 0 8px 16px rgba(208, 0, 42, 0.45);
         }
         .view-toggle {
             display: flex;
@@ -496,17 +497,17 @@
         </header>
 
         <div class="controls">
-            <input type="text" id="searchInput" placeholder="Search by title, director, or country...">
-            <button id="countryFilterBtn" class="filter-toggle-btn menu" onclick="openCountryModal()">Countries</button>
+            <input type="text" id="searchInput" placeholder="Recherche par Titre, Directeur">
+            <button id="countryFilterBtn" class="filter-toggle-btn menu" onclick="openCountryModal()">Pays</button>
             <button id="cinemaFilterBtn" class="filter-toggle-btn menu" onclick="openCinemaModal()">Cinemas</button>
             <button id="categoryFilterBtn" class="filter-toggle-btn menu" onclick="openCategoryModal()">Categories</button>
-            <button id="todayBtn" class="filter-toggle-btn toggle" onclick="toggleTodaysMovies()">🎬 Today's Movies</button>
-            <button id="coBtn" class="filter-toggle-btn toggle" onclick="toggleCOOnly()">Compe Offic</button>
+            <button id="todayBtn" class="filter-toggle-btn toggle" onclick="toggleTodaysMovies()">Films d'aujourd'hui seulement</button>
+            <button id="coBtn" class="filter-toggle-btn toggle" onclick="toggleCOOnly()">competition officielle seulement</button>
             <div class="time-filter">
                 <label for="timeFrom">Temps à partir de</label>
                 <input type="time" id="timeFrom" step="60">
             </div>
-            <button class="reset-btn" onclick="resetFilters()">🗑️ Reset Filters</button>
+            <button class="reset-btn" onclick="resetFilters()">🔄 Reset Filters</button>
         </div>
 
         <div class="stats">
@@ -1493,4 +1494,3 @@ class="stat-label">salles de cinéma</div>
 </body>
 </html>
         
-
