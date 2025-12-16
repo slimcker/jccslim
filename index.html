@@ -4,20 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Film Festival Movie Database</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Pastel palette */
-            --pastel-blue: #93c5fd;   /* blue-300 */
-            --pastel-purple: #c4b5fd; /* purple-300 */
-            --pastel-green: #86efac;  /* green-300 */
-            --pastel-yellow: #fde68a; /* yellow-300 */
-            --pastel-teal: #a7f3d0;   /* teal-200 */
-
-            --text-primary: #e2e8f0;
-            --text-muted: #cbd5e1;
-            --surface-1: #0f172a;     /* deep navy */
-            --surface-2: #1e293b;     /* slate */
-            --surface-3: #334155;     /* lighter slate */
+            --bg: #0a0a0a;
+            --fg: #f5f5f5;
+            --muted: #bfbfbf;
+            --accent: #00d1ff;
+            --card: #121212;
+            --border: #1f1f1f;
+            --grad-warm1: #ff6a00;
+            --grad-warm2: #ff3d6e;
+            --grad-cool1: #00b2ff;
+            --grad-cool2: #0a53c1;
+            --_noise-texture: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><defs><filter id='n' x='0' y='0' width='100%' height='100%' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='0.3' numOctaves='3' stitchTiles='stitch' result='t'/><feColorMatrix type='saturate' values='0' in='t' result='g'/><feComponentTransfer in='g' result='a'><feFuncA type='linear' slope='0.5'/></feComponentTransfer></filter></defs><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+            --_noise-size: 15.4%;
+            --_gradient-blend-mode: normal;
+            --_gradient-blur: 0px;
+            --_gradient: radial-gradient(at 24.2% 15.9%, #E6661B 0px, transparent 50%), radial-gradient(at 89.1% 13.3%, #E02C1D 0px, transparent 50%), radial-gradient(at 62.1% 50.8%, #D7186D 0px, transparent 50%), radial-gradient(at 13% 71.8%, #3691CC 0px, transparent 50%), radial-gradient(at 93.7% 69.9%, #274390 0px, transparent 50%);
         }
         * {
             margin: 0;
@@ -26,17 +32,13 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #0b1220;
-            background-image:
-                radial-gradient(1200px at 85% 5%, rgba(255,131,35,0.95) 0%, rgba(255,131,35,0.55) 35%, rgba(255,131,35,0.25) 55%, transparent 70%),
-                radial-gradient(900px at 92% 40%, rgba(255,63,128,0.9) 0%, rgba(255,63,128,0.5) 40%, transparent 75%),
-                radial-gradient(1100px at 8% 95%, rgba(46,144,255,0.95) 0%, rgba(46,144,255,0.55) 45%, transparent 78%),
-                radial-gradient(900px at 30% 45%, rgba(255,247,234,0.8) 0%, rgba(255,247,234,0.4) 35%, transparent 70%);
-            background-attachment: fixed;
-            color: var(--text-primary);
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--fg);
             padding: 40px 20px;
             min-height: 100vh;
+            font-weight: 400;
+            letter-spacing: -0.01em;
         }
 
         .container {
@@ -50,23 +52,25 @@
         }
 
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #ffffff 0%, #ffa7b4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            color: var(--fg);
+            margin-bottom: 6px;
+            text-transform: uppercase;
         }
 
         .subtitle {
-            color: black;
-            font-size: 1.1em;
+            color: var(--muted);
+            font-size: 1rem;
+            font-weight: 300;
         }
 
         .creator-line {
             text-align: center;
-            font-size: 0.9em;
-            color: var(--text-primary);
+            font-size: 0.9rem;
+            color: var(--fg);
             font-weight: 500;
             margin-top: 6px;
         }
@@ -93,50 +97,84 @@
         select,
         input[type="time"] {
             padding: 12px 16px;
-            background: var(--surface-2);
-            border: 1px solid var(--surface-3);
-            color: var(--text-primary);
-            border-radius: 12px;
+            background: var(--bg);
+            border: 2px solid var(--border);
+            color: var(--fg);
+            border-radius: 10px;
             font-size: 1em;
             flex: 1;
             min-width: 200px;
         }
 
         input[type="text"]::placeholder {
-            color: #64748b;
+            color: var(--muted);
         }
 
         input[type="text"]:focus,
         select:focus,
         input[type="time"]:focus {
             outline: none;
-            border-color: var(--pastel-blue);
-            box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.18);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 209, 255, 0.18);
         }
 
         button {
             padding: 12px 20px;
-            background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-green) 100%);
-            color: white;
-            border: none;
-            border-radius: 999px; /* pill shape */
-            font-weight: 600;
+            background: var(--bg);
+            color: var(--fg);
+            border: 2px solid var(--accent);
+            border-radius: 999px;
+            font-weight: 700;
+            text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         button:hover {
             transform: translateY(-1px);
-            box-shadow: 0 8px 16px rgba(147, 197, 253, 0.35);
+            background: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 8px 16px rgba(0, 209, 255, 0.35);
         }
 
         .filter-toggle-btn {
-            background: linear-gradient(135deg, var(--pastel-purple) 0%, var(--pastel-blue) 100%);
+            background: var(--bg);
+            border-color: var(--accent);
+        }
+        .filter-toggle-btn.menu::before {
+            content: "☰";
+            display: inline-block;
+            margin-right: 8px;
+            font-weight: 700;
+        }
+        .filter-toggle-btn.toggle {
+            position: relative;
+            padding-left: 36px;
+        }
+        .filter-toggle-btn.toggle::before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%) scale(0.9);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid #38b000;
+            background: transparent;
+            box-shadow: 0 0 0 0 rgba(56,176,0,0.35);
+            transition: all 0.25s ease;
+        }
+        .filter-toggle-btn.toggle.active::before {
+            background: #38b000;
+            box-shadow: 0 0 0 6px rgba(56,176,0,0.18);
+            transform: translateY(-50%) scale(1.05);
         }
 
         .filter-toggle-btn.active {
-            background: linear-gradient(135deg, #6ee7b7 0%, var(--pastel-green) 100%);
-            box-shadow: 0 8px 16px rgba(110, 231, 183, 0.4);
+            background: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 8px 16px rgba(0, 209, 255, 0.4);
         }
 
         .stats {
@@ -147,65 +185,101 @@
         }
 
         .stat-card {
-            background: var(--surface-2);
+            background: var(--card);
             padding: 20px;
             border-radius: 16px;
-            border: 1px solid var(--surface-3);
+            border: 1px solid var(--border);
             text-align: center;
-            box-shadow: 0 6px 18px rgba(2, 6, 23, 0.35);
+            box-shadow: none;
         }
 
         .stat-number {
-            font-size: 2em;
-            font-weight: bold;
-            color: #60a5fa;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--accent);
             margin-bottom: 4px;
         }
 
         .stat-label {
-            color: #94a3b8;
-            font-size: 0.9em;
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 300;
         }
 
         .movies-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             margin-bottom: 40px;
         }
 
         .movie-card {
-            background: var(--surface-2);
-            border-left: 4px solid var(--pastel-yellow);
+            background: var(--_gradient) #3691CC;
+            mix-blend-mode: var(--_gradient-blend-mode);
+            border-left: 4px solid var(--accent);
             padding: 20px;
             border-radius: 16px;
-            border: 1px solid var(--surface-3);
+            border: 1px solid var(--border);
             transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .movie-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: var(--_noise-texture);
+            background-size: var(--_noise-size);
+            background-position: center;
+            background-repeat: repeat;
+            opacity: 0.08;
+            mix-blend-mode: overlay;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .movie-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(120deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0.18) 100%);
+            pointer-events: none;
+            z-index: 0;
+            backdrop-filter: blur(var(--_gradient-blur)) contrast(100%) brightness(100%);
+            -webkit-backdrop-filter: blur(var(--_gradient-blur)) contrast(100%) brightness(100%);
+        }
+        .movie-card > * {
+            position: relative;
+            z-index: 1;
         }
 
         .movie-card:hover {
-            background: #273244;
             transform: translateX(3px);
-            box-shadow: 0 10px 28px rgba(147, 197, 253, 0.25);
+            box-shadow: 0 10px 28px rgba(0, 209, 255, 0.25);
         }
 
         .movie-title {
-            font-size: 1.25em;
+            font-size: 1.4rem;
             font-weight: 700;
+            letter-spacing: -0.01em;
             margin-bottom: 8px;
-            color: #f1f5f9;
+            color: var(--fg);
+            text-transform: uppercase;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.6);
         }
 
         .movie-subtitle {
-            font-size: 1.05em;
-            font-weight: 600;
-            color: #e2e8f0;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--fg);
             margin-top: -4px;
             margin-bottom: 8px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
         .movie-subtitle.rtl {
             direction: rtl;
+            text-align: right;
+            font-weight: 600;
         }
 
         /* Sub-projection styles for multi-film sessions */
@@ -217,56 +291,56 @@
             gap: 12px;
         }
         .projection-item {
-            background: var(--surface-1);
-            border: 1px solid var(--surface-3);
-            border-left: 3px solid var(--pastel-teal);
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
             border-radius: 12px;
             padding: 12px;
         }
         .projection-title {
-            font-size: 1.05em;
+            font-size: 1.05rem;
             font-weight: 700;
-            color: #e2e8f0;
+            color: var(--fg);
             margin-bottom: 6px;
         }
         .projection-meta {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 8px;
-            font-size: 0.9em;
-            color: #cbd5e1;
+            font-size: 0.9rem;
+            color: var(--muted);
         }
 
         /* Modal styles */
         .modal-backdrop {
             position: fixed;
             inset: 0;
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(10, 10, 10, 0.8);
             display: none;
             align-items: center;
             justify-content: center;
             z-index: 1000;
         }
         .modal {
-            background: var(--surface-1);
-            border: 1px solid var(--surface-3);
+            background: var(--bg);
+            border: 1px solid var(--border);
             border-radius: 16px;
             width: 520px;
             max-width: 90vw;
-            box-shadow: 0 12px 36px rgba(2, 6, 23, 0.6);
+            box-shadow: none;
         }
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 12px 16px;
-            border-bottom: 1px solid #334155;
-            color: #e2e8f0;
+            border-bottom: 1px solid var(--border);
+            color: var(--fg);
         }
         .close-btn {
             background: transparent;
             border: none;
-            color: #94a3b8;
+            color: var(--muted);
             font-size: 1.1em;
             cursor: pointer;
         }
@@ -283,12 +357,12 @@
             justify-content: flex-end;
             gap: 12px;
             padding: 12px 16px 16px;
-            border-top: 1px solid #334155;
+            border-top: 1px solid var(--border);
         }
         .modal-actions .primary {
-            background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-purple) 100%);
-            color: #fff;
-            border: none;
+            background: var(--accent);
+            color: var(--bg);
+            border: 2px solid var(--accent);
             padding: 8px 14px;
             border-radius: 999px;
             cursor: pointer;
@@ -299,21 +373,22 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #cbd5e1;
+            color: var(--muted);
         }
         .country-option.main {
             font-size: 1.1em;
             font-weight: 700;
-            color: #f8fafc;
+            color: var(--fg);
         }
 
         .movie-meta {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 12px;
-            font-size: 0.9em;
-            color: #cbd5e1;
+            font-size: 0.9rem;
+            color: var(--fg);
             margin-top: 12px;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.45);
         }
 
         .meta-item {
@@ -322,25 +397,27 @@
         }
 
         .meta-label {
-            color: #94a3b8;
-            font-weight: 600;
+            color: var(--muted);
+            font-weight: 500;
         }
 
         .cinema-badge {
             display: inline-block;
-            background: #273244;
-            color: var(--pastel-purple);
+            background: transparent;
+            color: var(--accent);
             padding: 6px 12px;
             border-radius: 999px;
-            font-size: 0.8em;
-            font-weight: 600;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 2px solid var(--accent);
             margin-top: 12px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
 
         .no-results {
             text-align: center;
             padding: 40px;
-            color: #94a3b8;
+            color: var(--muted);
         }
 
         .no-results-icon {
@@ -348,11 +425,12 @@
             margin-bottom: 16px;
         }
         .reset-btn {
-            background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
-            color: #1f2937;
+            background: var(--bg);
+            color: var(--fg);
+            border-color: var(--accent);
         }
         .reset-btn:hover {
-            box-shadow: 0 8px 16px rgba(252, 165, 165, 0.45);
+            box-shadow: 0 8px 16px rgba(0, 209, 255, 0.45);
         }
         .view-toggle {
             display: flex;
@@ -362,17 +440,18 @@
 
         .view-btn {
             padding: 8px 16px;
-            background: #334155;
-            color: #e2e8f0;
-            border: none;
+            background: var(--bg);
+            color: var(--fg);
+            border: 2px solid var(--border);
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .view-btn.active {
-            background: #60a5fa;
-            color: white;
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
         }
 
         .list-view {
@@ -411,33 +490,18 @@
 <body>
     <div class="container">
         <header>
-            <h1 style="color:black;">🎬 moteur de recherche films JCC</h1>
+            <h1>🎬 moteur de recherche films JCC</h1>
             <div class="creator-line">created by @slim</div>
+            <p class="subtitle">All movies from the festival across all cinemas</p>
         </header>
 
         <div class="controls">
-            <input type="text" id="searchInput" placeholder="Search by title or director">
-        
-            <select id="cinemaFilter">
-                <option value="">All Cinemas</option>
-                <option value="CINÉ 350">CINÉ 350</option>
-                <option value="ABC">ABC</option>
-                <option value="LE RIO">LE RIO</option>
-                <option value="4ÈME ART">4ÈME ART</option>
-   
-                <option value="TAHAR CHERIAA">TAHAR CHERIAA</option>
-                <option value="IBN RACHIQ">IBN RACHIQ</option>
-                <option value="COLISÉE">COLISÉE</option>
-                <option value="AFRICA">AFRICA</option>
-                <option value="ALHAMBRA ZEPHYR">ALHAMBRA ZEPHYR</option>
-            
-            </select>
-            <select id="categoryFilter">
-                <option value="">All Categories</option>
-            </select>
-            <button id="countryFilterBtn" class="filter-toggle-btn" onclick="openCountryModal()">Country Filter</button>
-            <button id="todayBtn" class="filter-toggle-btn" onclick="toggleTodaysMovies()">🎬 Today's Movies</button>
-            <button id="coBtn" class="filter-toggle-btn" onclick="toggleCOOnly()">Compe Offic</button>
+            <input type="text" id="searchInput" placeholder="Search by title, director, or country...">
+            <button id="countryFilterBtn" class="filter-toggle-btn menu" onclick="openCountryModal()">Countries</button>
+            <button id="cinemaFilterBtn" class="filter-toggle-btn menu" onclick="openCinemaModal()">Cinemas</button>
+            <button id="categoryFilterBtn" class="filter-toggle-btn menu" onclick="openCategoryModal()">Categories</button>
+            <button id="todayBtn" class="filter-toggle-btn toggle" onclick="toggleTodaysMovies()">🎬 Today's Movies</button>
+            <button id="coBtn" class="filter-toggle-btn toggle" onclick="toggleCOOnly()">Compe Offic</button>
             <div class="time-filter">
                 <label for="timeFrom">Temps à partir de</label>
                 <input type="time" id="timeFrom" step="60">
@@ -475,6 +539,34 @@ class="stat-label">salles de cinéma</div>
                 <div class="modal-actions">
                     <button onclick="clearCountrySelection()">Clear</button>
                     <button class="primary" onclick="applyCountrySelection()">OK</button>
+                </div>
+            </div>
+        </div>
+        <!-- Cinemas Modal -->
+        <div id="cinemaModal" class="modal-backdrop" style="display:none;">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>Select Cinemas</h3>
+                    <button class="close-btn" onclick="closeCinemaModal()">✖</button>
+                </div>
+                <div id="cinemaOptions" class="modal-body"></div>
+                <div class="modal-actions">
+                    <button onclick="clearCinemaSelection()">Clear</button>
+                    <button class="primary" onclick="applyCinemaSelection()">OK</button>
+                </div>
+            </div>
+        </div>
+        <!-- Categories Modal -->
+        <div id="categoryModal" class="modal-backdrop" style="display:none;">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>Select Categories</h3>
+                    <button class="close-btn" onclick="closeCategoryModal()">✖</button>
+                </div>
+                <div id="categoryOptions" class="modal-body"></div>
+                <div class="modal-actions">
+                    <button onclick="clearCategorySelection()">Clear</button>
+                    <button class="primary" onclick="applyCategorySelection()">OK</button>
                 </div>
             </div>
         </div>
@@ -793,44 +885,20 @@ class="stat-label">salles de cinéma</div>
                 initializeApp();
             } catch (e) {
                 console.error('Failed to load data from json.json.txt', e);
+                filteredMovies = [...allMoviesData];
+                initializeApp();
             }
         }
 
         function initializeApp() {
-            populateCategoryFilter();
-            populateCinemaFilter();
             applyFilters();
         }
 
-        function populateCinemaFilter() {
-            const select = document.getElementById('cinemaFilter');
-            // Preserve the first "All Cinemas" option
-            const firstOptionLabel = select.querySelector('option[value=""]')?.textContent || 'All Cinemas';
-            select.innerHTML = `<option value="">${firstOptionLabel}</option>`;
-            const cinemas = [...new Set(allMoviesData.map(m => m.cinema).filter(Boolean))].sort((a, b) => a.localeCompare(b));
-            cinemas.forEach(name => {
-                const option = document.createElement('option');
-                option.value = name;
-                option.textContent = name;
-                select.appendChild(option);
-            });
-        }
-
-        function populateCategoryFilter() {
-            const categoryFilter = document.getElementById('categoryFilter');
-            // Preserve the first "All Categories" option
-            const firstOptionLabel = categoryFilter.querySelector('option[value=""]')?.textContent || 'All Categories';
-            categoryFilter.innerHTML = `<option value="">${firstOptionLabel}</option>`;
-            const categories = [...new Set(allMoviesData.map(movie => movie.category).filter(Boolean))].sort((a, b) => a.localeCompare(b));
-            categories.forEach(category => {
-                const option = document.createElement('option');
-                option.value = category;
-                option.textContent = category;
-                categoryFilter.appendChild(option);
-            });
-        }
+        /* removed single-select population; now using modal multi-selects */
 
         let selectedCountriesFilter = [];
+        let selectedCinemasFilter = [];
+        let selectedCategoriesFilter = [];
         // Canonical country names used for normalization and display
         const CANONICAL_COUNTRIES = [
             'TUNISIE','ALGÉRIE','ARABIE SAOUDITE','ARMÉNIE','BOLIVIE','BRÉSIL','BURKINA FASO','CHILI',
@@ -889,8 +957,8 @@ class="stat-label">salles de cinéma</div>
 
         function applyFilters() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const cinema = document.getElementById('cinemaFilter').value;
-            const category = document.getElementById('categoryFilter').value;
+            const cinemaSingle = '';
+            const categorySingle = '';
             const timeFromStr = (document.getElementById('timeFrom').value || '').trim();
             const timeFromMin = parseTimeToMinutes(timeFromStr);
 
@@ -901,8 +969,12 @@ class="stat-label">salles de cinéma</div>
                                 movie.director.toLowerCase().includes(searchTerm) ||
                                 movie.country.toLowerCase().includes(searchTerm);
 
-                const cinemaMatch = !cinema || movie.cinema === cinema;
-                const categoryMatch = !category || movie.category === category;
+                const cinemaMatch = selectedCinemasFilter.length === 0
+                    ? (!cinemaSingle || movie.cinema === cinemaSingle)
+                    : selectedCinemasFilter.includes(movie.cinema);
+                const categoryMatch = selectedCategoriesFilter.length === 0
+                    ? (!categorySingle || movie.category === categorySingle)
+                    : selectedCategoriesFilter.includes(movie.category);
                 const coOnlyMatch = !showCOOnlyFilter || /^\s*CO\b/.test(movie.category || '');
                 const todayMatch = !showTodaysMoviesFilter || movie.date === todayDate;
                 const movieTimeMin = parseTimeToMinutes(movie.time);
@@ -1257,14 +1329,15 @@ class="stat-label">salles de cinéma</div>
 
         function resetFilters() {
             document.getElementById('searchInput').value = '';
-            document.getElementById('cinemaFilter').value = '';
-            document.getElementById('categoryFilter').value = '';
             const tf = document.getElementById('timeFrom'); if (tf) tf.value = '';
             showTodaysMoviesFilter = false;
             document.getElementById('todayBtn').classList.remove('active');
             showCOOnlyFilter = false;
             const coBtnEl = document.getElementById('coBtn');
             if (coBtnEl) coBtnEl.classList.remove('active');
+            selectedCountriesFilter = [];
+            selectedCinemasFilter = [];
+            selectedCategoriesFilter = [];
             filteredMovies = [...allMoviesData];
             updateStats();
             renderMovies();
@@ -1272,8 +1345,6 @@ class="stat-label">salles de cinéma</div>
 
         // Event listeners
         document.getElementById('searchInput').addEventListener('input', applyFilters);
-        document.getElementById('cinemaFilter').addEventListener('change', applyFilters);
-        document.getElementById('categoryFilter').addEventListener('change', applyFilters);
         const tfEl = document.getElementById('timeFrom'); if (tfEl) tfEl.addEventListener('change', applyFilters);
 
         function openCountryModal() {
@@ -1281,28 +1352,41 @@ class="stat-label">salles de cinéma</div>
             const modal = document.getElementById('countryModal');
             modal.style.display = 'flex';
         }
+        function openCinemaModal() {
+            buildCinemaOptions();
+            const modal = document.getElementById('cinemaModal');
+            modal.style.display = 'flex';
+        }
+        function openCategoryModal() {
+            buildCategoryOptions();
+            const modal = document.getElementById('categoryModal');
+            modal.style.display = 'flex';
+        }
 
         function closeCountryModal() {
             const modal = document.getElementById('countryModal');
             modal.style.display = 'none';
         }
+        function closeCinemaModal() {
+            const modal = document.getElementById('cinemaModal');
+            modal.style.display = 'none';
+        }
+        function closeCategoryModal() {
+            const modal = document.getElementById('categoryModal');
+            modal.style.display = 'none';
+        }
 
         function getFilteredWithoutCountry() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const cinema = document.getElementById('cinemaFilter').value;
-            const category = document.getElementById('categoryFilter').value;
-
             return allMoviesData.filter(movie => {
                 const arabic = (movie.arabicTitle || '').toLowerCase();
                 const textMatch = movie.title.toLowerCase().includes(searchTerm) ||
                                   arabic.includes(searchTerm) ||
                                   movie.director.toLowerCase().includes(searchTerm) ||
                                   movie.country.toLowerCase().includes(searchTerm);
-
-                const cinemaMatch = !cinema || movie.cinema === cinema;
-                const categoryMatch = !category || movie.category === category;
+                const cinemaMatch = selectedCinemasFilter.length === 0 || selectedCinemasFilter.includes(movie.cinema);
+                const categoryMatch = selectedCategoriesFilter.length === 0 || selectedCategoriesFilter.includes(movie.category);
                 const todayMatch = !showTodaysMoviesFilter || movie.date === todayDate;
-
                 return textMatch && cinemaMatch && categoryMatch && todayMatch;
             });
         }
@@ -1348,15 +1432,56 @@ class="stat-label">salles de cinéma</div>
             closeCountryModal();
             applyFilters();
         }
+        function applyCinemaSelection() {
+            const checkedInputs = Array.from(document.querySelectorAll('#cinemaOptions input[type="checkbox"]:checked'));
+            selectedCinemasFilter = checkedInputs.map(i => i.value);
+            closeCinemaModal();
+            applyFilters();
+        }
+        function applyCategorySelection() {
+            const checkedInputs = Array.from(document.querySelectorAll('#categoryOptions input[type="checkbox"]:checked'));
+            selectedCategoriesFilter = checkedInputs.map(i => i.value);
+            closeCategoryModal();
+            applyFilters();
+        }
 
         function clearCountrySelection() {
             selectedCountriesFilter = [];
             buildCountryOptions();
         }
+        function clearCinemaSelection() {
+            selectedCinemasFilter = [];
+            buildCinemaOptions();
+        }
+        function clearCategorySelection() {
+            selectedCategoriesFilter = [];
+            buildCategoryOptions();
+        }
 
-        // Initialize app immediately with embedded data so UI isn't empty
-        initializeApp();
-        // Then fetch and refresh with JSON data when available
+        function buildCinemaOptions() {
+            const container = document.getElementById('cinemaOptions');
+            const cinemas = [...new Set(allMoviesData.map(m => m.cinema).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+            container.innerHTML = cinemas.map(name => {
+                const checked = selectedCinemasFilter.includes(name) ? 'checked' : '';
+                return `<label class="country-option">
+                            <input type="checkbox" value="${name}" ${checked}>
+                            <span>${name}</span>
+                        </label>`;
+            }).join('');
+        }
+        function buildCategoryOptions() {
+            const container = document.getElementById('categoryOptions');
+            const categories = [...new Set(allMoviesData.map(m => m.category).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+            container.innerHTML = categories.map(cat => {
+                const checked = selectedCategoriesFilter.includes(cat) ? 'checked' : '';
+                return `<label class="country-option">
+                            <input type="checkbox" value="${cat}" ${checked}>
+                            <span>${cat}</span>
+                        </label>`;
+            }).join('');
+        }
+
+        // Load JSON data (falls back to embedded dataset on error)
         loadData();
     </script>
     <!-- Privacy-friendly analytics by Plausible -->
@@ -1365,8 +1490,6 @@ class="stat-label">salles de cinéma</div>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
   plausible.init()
 </script>
-
 </body>
 </html>
         
-
